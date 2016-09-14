@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="scripts/common/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="css/myCenter/myCenter.module.css">
+    <title>多肉理财</title>
+</head>
+<body>
+<section class="asset_index_container" id="asset_index_container" v-cloak>
+    <header class="f-cb">
+        <a href="html/activities/index.html" class="f-fl">
+            <img src="images/back.png" alt="" class="returnArrow">
+        </a>
+        <span>资产</span>
+    </header>
+    <div class="account_Number">
+        <p class="asset_money_txt">
+            <span>总资产（元）</span>
+            <a href="javascript:;" class="switch" v-on:click="switch">
+                <img src="images/eyelash_assets.png" class="eyeClose" alt="" v-show="pswDisplay">
+                <img src="images/eye_assets.png" class="eyeOpen" style="display: none;" alt="" v-show="!pswDisplay">
+            </a>
+        </p>
+        <p class="asset_money_num" v-show="value">{{amount}}</p>
+        <p v-show="!value" class="asset_money_num" >******</p>
+        <p class="all_earning_txt">累计收益（元）</p>
+        <p class="all_earning_num" v-show="value">{{rate}}</p>
+        <p class="all_earning_num" v-show="!value">*****</p>
+    </div>
+        <ul class="detail_list">
+            <li class="f-cb dl_info">
+                <div class="f-fl dl_account" style="font-size: 1.5rem;">
+                    <p>账户余额</p>
+                    <p v-show="value">{{rateBalance}}</p>
+                    <p v-show="!value">****</p>
+                </div>
+                <div class="f-fr dl_btns">
+                    <a href="javascript:;">提现</a>
+                    <a href="html/myCenter/recharge.html">充值</a>
+                </div>
+            </li>
+            <li class="f-cb dl_current">
+                <div class="f-fl">
+                    <img src="images/currentIcon.png" alt="">
+                    <span>活期宝</span>
+                </div>
+                <div class="f-fr">
+                    <span v-show="value">{{hqBalance}}</span>
+                    <span v-show="!value">****</span>
+                    <!--<img src="images/arrows_right.png" alt="">-->
+                </div>
+            </li>
+            <li class="f-cb dl_fixed">
+                <div class="f-fl ">
+                    <img src="images/fixedIcon.png" alt="">
+                    <span>定期理财</span>
+                </div>
+                <div class="f-fr">
+                    <span v-show="value">{{dqBalance}}</span>
+                    <span v-show="!value">****</span>
+                    <!--<img src="images/arrows_right.png" alt="">-->
+                </div>
+            </li>
+            <li class="f-cb dl_tyj">
+                <div class="f-fl">
+                    <img src="images/diamond.png" alt="">
+                    <span>体验金</span>
+
+                </div>
+                <div class="f-fr">
+                    <span v-show="value">{{experienceMoneyAmount}}</span>
+                    <span v-show="!value">****</span>
+                    <!--<img src="images/arrows_right.png" alt="">-->
+                </div>
+            </li>
+        </ul>
+
+</section>
+<script src="scripts/common/vue.js"></script>
+<script src="scripts/common/vue-resource.min.js"></script>
+<script src="scripts/common/custom-function.js"></script>
+<script src="scripts/myCenter/asset_index.js"></script>
+</body>
+</html>

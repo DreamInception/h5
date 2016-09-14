@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="scripts/common/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="css/product/product.module.css">
+
+    <title>多肉理财</title>
+</head>
+<body style="background: #f2f2f2;">
+<article class="try-cash-container greyBg" id="try-cash-container" v-cloak>
+    <header class="f-cb">
+        <a href="javascript:history.go(-1)" class="f-fl">
+            <img src="images/back.png" alt="" class="returnArrow">
+        </a>
+        <span class="title">体验金</span>
+    </header>
+    <div v-for="item in moneyCouponList"  style="background-color: #f2f2f2">
+        <div v-bind:class="{ 'select_coupon_bg':item.autoId==selectId , 'default_coupon_list': !(item.autoId==selectId) }"
+             v-on:click="selectCoupon(item.autoId, item.amount)">
+            <img src="images/red_gou.png" alt="" class="selectGou" v-bind:class="{'gouIsShow':item.autoId==selectId}">
+            <img src="images/tyj_kgq_left.png" alt="" class="couponTime">
+            <div class="subTitle f-cb">
+                <p class="f-fl">{{item.titleTip}}</p>
+                <p class="f-fr"><span class="symbol">￥{{item.amount}}</span></p>
+            </div>
+            <div class="details">
+                <p>年化收益率：<span>{{item.yearRateStr}}%</span></p>
+                <p>有效期至：<span>{{item.closingDateStr}}</span></p>
+                <p>使用规则：<span>投资{{item.minDays}}天以上金额满{{item.minAmount}}以上产品可用</span></p>
+                <p>使用周期：<span>{{item.dayCount}}</span>天</p>
+            </div>
+        </div>
+    </div>
+    <div class="operArea f-cb">
+        <div class="close-use f-fl">
+            <input type="checkbox" id="checkbox-1-1"  v-on:click="unSelectCoupon"/><label for="checkbox-1-1" style="margin-left: 2rem;"></label>
+            <span style="margin-left: 0.5rem;">不激活体验金</span>
+        </div>
+        <button class="confirmBtn f-fr" @click="selectedMoneyCouponOk">确定</button>
+    </div>
+</article>
+</body>
+<script src="scripts/common/vue.js"></script>
+<script src="scripts/common/vue-resource.min.js"></script>
+<script src="scripts/common/custom-function.js"></script>
+<script src="scripts/product/fixed_product/fixed_session_storage.js"></script>
+<script src="scripts/product/fixed_product/fixed_tyj_ticket.js"></script>
+</html>
