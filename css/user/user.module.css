@@ -1,0 +1,189 @@
+/*------------------------------------------- login.html -------------------------------------------*/
+.user-common-container{
+    position: relative;
+    overflow: hidden;
+    background:#ffffff;
+}
+/*.user-common-container header{*/
+    /*height: 1.8rem;*/
+    /*line-height: 1.8rem;*/
+    /*padding: 1.8rem;*/
+    /*border-bottom: solid 1px #f2f2f2;*/
+    /*text-align: center;*/
+/*}*/
+/*.user-common-container header span{*/
+    /*font-size:1.8rem;*/
+    /*color:#4a4a4a;*/
+/*}*/
+/*.user-common-container header .regLink{*/
+    /*font-size:15px;*/
+    /*color:#4a4a4a;*/
+/*}*/
+.user-common-container section{
+    padding: 22px 16px;
+}
+.user-common-container .regLink{
+    font-size:15px;
+    color:#4a4a4a;
+}
+.user-common-container .form-input-box{
+    position: relative;
+    border:1px solid #ac9354;
+    /*height:4rem;*/
+    margin-top: 1.2rem;
+}
+.user-common-container .form-label{
+    position: absolute;
+    color:#717071;
+    left: 1.2rem;
+    line-height: 4rem;
+    font-size:1.5rem;
+}
+.user-common-container input{
+    font-size:1.5rem;
+    /*line-height: 4rem;*/
+    padding: 1rem 0;
+    text-indent: 25%;
+    color:#727171;
+    letter-spacing:1px;
+    text-align:left;
+    border: none;
+    width: 100%;
+}
+.user-common-container .loginBtn{
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    font-size:15px;
+    color:#ffffff;
+    margin-top: 3rem;
+    background:#ac9354;
+}
+.user-common-container .loginRule{
+    padding: 0 16px;
+    margin-top: 4rem;
+    clear: both;
+    font-size:1.2rem;
+    color:#717071;
+    letter-spacing:0.4px;
+}
+.user-common-container .resetPsw{
+    color:#e54d46;
+}
+.user-common-container .forgetPsw{
+    margin-top: 0.9rem;
+    font-size:1.2rem;
+    color:#ac9354;
+    line-height:2.1rem;
+    text-align:center;
+}
+.user-common-container .switch{
+    position: absolute;
+    right: 1.1rem;
+    width: 1.5rem;
+    top: 1.2rem;
+}
+.user-common-container .switch img{
+    width: 100%;
+}
+/*.user-common-container .eyeClose,.user-common-container  .eyeOpen{*/
+    /*position: absolute;*/
+    /*right: 1.1rem;*/
+    /*width: 1.5rem;*/
+    /*top: 1.7rem;*/
+/*}*/
+/*------------------------------------------- reg.html -------------------------------------------*/
+.user-common-container .form-bind-wechat{
+    /*margin: 2rem;*/
+    font-size:1.5rem;
+    line-height: 3rem;
+    color:#717071;
+    text-align:left;
+    text-indent: 0.5rem;
+}
+.user-common-container .imgCodeLink{
+    position: absolute;
+    right:  0;
+    top: 0;
+}
+.user-common-container .imgCode {
+    width: 10rem;
+    height: 4.2rem;
+    line-height: 4.2rem;
+}
+.user-common-container .sendBtn{
+    position: absolute;
+    width:6rem;
+    height:4.2rem;
+    line-height: 4.2rem;
+    font-size:1.2rem;
+    color:#ffffff;
+    text-align:center;
+    right:  0;
+    top: 0;
+}
+.user-common-container .sendBtn-default-Bg{
+    background:#ac9354;
+}
+.user-common-container .sendBtn-disabled-Bg{
+    background:#c8c9ca!important;
+}
+.user-common-container .form-recommend{
+    margin-top: 17px;
+
+}
+.user-common-container .form-recommend img{
+    width: 8px;
+}
+.user-common-container .form-recommend span{
+    padding-left: 1rem;
+    font-size:15px;
+    color:#717071;
+}
+.user-common-container .form-agreement{
+    margin-top: 10rem;
+    font-size:15px;
+    color:#717071;
+    text-align:left;
+}
+.user-common-container .regBtn{
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    font-size:15px;
+    color:#ffffff;
+    margin-top: 1.1rem;
+    background:#ac9354;
+}
+.user-common-container .platformContract{
+    color: #ac9354;
+}
+.ar-btns button:first-child{
+    width: 46%;
+    height: 4.5rem;
+    background:#4a4a4a;
+    line-height: 4.5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    display: inline-block;
+}
+.ar-btns button:last-child{
+    width: 46%;
+    height: 4.5rem;
+    background:#e54d46;
+    line-height: 4.5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    display: inline-block;
+}
+.already-register p{
+    font-size:1.6rem;
+    color:#4a4a4a;
+    line-height:1.6rem;
+    padding: 3rem 0 2.8rem 0;
+    text-align:center;
+}

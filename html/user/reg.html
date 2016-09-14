@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/inserthtml.com.radios.css">
+    <script src="scripts/common/jquery-2.0.3.min.js"></script>
+
+    <link rel="stylesheet" href="css/user/user.module.css">
+    <title>多肉理财</title>
+</head>
+<body>
+<article class="user-common-container" id="user-register-container">
+    <header class="f-cb">
+        <a href="javascript:history.go(-1)" class="f-fl">
+            <img src="images/back.png" alt="" class="returnArrow">
+        </a>
+        <span>注册</span>
+    </header>
+    <section>
+        <div class="form-bind-wechat f-cb">
+            <p class=" f-fl">注册并绑定账号</p>
+            <input type="checkbox" id="checkbox-10-1"  @click="bindWechat"/><label for="checkbox-10-1"  class="f-fr" style="margin-right: 0"></label>
+        </div>
+        <div class="form-input-box">
+            <label class="form-label">手机号</label>
+            <input class="phoneNum" type="number" placeholder="请输入手机号" v-model="mobile">
+        </div>
+        <div class="form-input-box">
+            <label class="form-label">设置密码</label>
+            <input class="password" type="{{type}}" placeholder="请输入6-16位数字和字母" v-model="password" >
+            <a href="javascript:;" class="switch" v-on:click="switch">
+                <img src="images/eyelash_assets.png" class="eyeClose" alt="" v-show="!pswDisplay">
+                <img src="images/eye_assets.png" class="eyeOpen" style="display: none;" alt="" v-show="pswDisplay">
+            </a>
+        </div>
+        <div class="form-input-box">
+            <label class="form-label">验证码</label>
+            <input class="verifiyCode" type="text" placeholder="请输入图形验证码" v-model="imgCodeText">
+            <a href="javascript:;" class="imgCodeLink" v-on:click="getImgCode">
+                <img v-bind:src="imgData" class="imgCode" alt="">
+            </a>
+        </div>
+        <div class="form-input-box">
+            <label class="form-label">短信验证码</label>
+            <input class="msgCode" type="text" placeholder="请输入短信验证码" style="text-indent: 9rem;" v-model="smsText">
+            <button id="sendBtn" class="sendBtn" v-bind:class="{ 'sendBtn-default-Bg': bgStatus, 'sendBtn-disabled-Bg': !bgStatus}"  v-on:click="sendSms"  v-bind="{ disabled: disableAttr}" v-html="sendTxt" disabled="true"></button>
+        </div>
+        <div class="form-recommend">
+            <!--<img src="images/arrows_right_register.png" alt="">-->
+            <!--<span>推荐人  （选填）</span>-->
+            <div class="form-input-box">
+                <label class="form-label">推荐人 (选填)</label>
+                <input class=recomment type="text" placeholder="请输入推荐人手机号" v-model="recomment" style="text-indent: 35%">
+            </div>
+        </div>
+        <div class="form-agreement">
+            <p>点击下一步代表您同意
+                <!--<a href="http://www.51vest.com/register_agreement/index.html" class="platformContract">《平台服务协议》</a>-->
+                <a href="html/contract/register_agreement.html" class="platformContract">《平台服务协议》</a>
+            </p>
+        </div>
+        <button id="regBtn" class="regBtn" v-on:click="reg" disabled="true">确认注册</button>
+    </section>
+    <div id="maskBg" class="maskBg" v-show="maskShow"></div>
+    <!--<aside class="commonWin already-register" v-show="ar_winShow">-->
+            <!--<p>手机号已被注册，请直接登录</p>-->
+        <!--<div class="f-cb ar-btns">-->
+            <!--<button class="cancelBtn f-fl">取消</button>-->
+            <!--<button class="confirmBtn f-fr">登录</button>-->
+        <!--</div>-->
+        <!--</div>-->
+    <!--</aside>-->
+</article>
+
+<script src="scripts/common/vue.js"></script>
+<script src="scripts/common/vue-resource.min.js"></script>
+<script src="scripts/common/custom-function.js"></script>
+<script src="scripts/user/reg.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="scripts/common/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="css/myCenter/myCenter.module.css">
+
+    <title>多肉理财</title>
+</head>
+<body style="background-color:#f7f7f7;">
+<article class="recharge-money-container lightGreyBg" id="recharge-money-container" v-cloak>
+    <header class="f-cb">
+        <a href="javascript:history.go(-1)" class="f-fl">
+            <img src="images/back.png" alt="" class="returnArrow">
+        </a>
+        <span class="title">充值</span>
+    </header>
+    <div id="maskBg" class="maskBg" v-show="maskShow"></div>
+    <aside class="commonWin rmc-sendMsg" v-show="sm_winShow">
+        <p class="title">确认充值</p>
+        <p class="dialog-divide"/>
+        <div class="sendMsgTxt">
+            <p>校验码已发送至您的手机</p>
+            <div class="form-input-box">
+                <input class="msgCode" type="text" placeholder="请输入验证码" v-model="smsCode">
+                <button class="sendBtn"
+                        v-bind:class="{ 'sendBtn-default-Bg': bgStatus, 'sendBtn-disabled-Bg': !bgStatus}"
+                        v-on:click="sendSms" v-bind="{ disabled: disableAttr}" v-html="sendTxt"></button>
+            </div>
+            <div class="f-cb rmc-btns">
+                <button class="cancelBtn f-fl" v-on:click="closeDialog">取消</button>
+                <button class="confirmBtn f-fr" v-on:click="recharge">确定</button>
+            </div>
+        </div>
+    </aside>
+    <aside class="commonWin rmc-lackMoney" v-show="lm_winShow">
+        <div class="f-cb">
+            <a href="javascript:;" class="closeLink"><img src="images/red_close.png" class="closeBtn"> </a>
+            <span>抱歉，此卡余额不足</span>
+        </div>
+        <button class="confirmBtn">确定</button>
+
+        </div>
+    </aside>
+    <section>
+        <div style="background-color:#FFF;">
+            <div class="form-box">
+                <label class="form-label">身份信息</label>
+                <span class="realInfo">{{ realName }} ({{ idCard }})</span>
+            </div>
+            <p class="p-divide"/>
+            <div class="form-box-bankInfo">
+                <label class="form-label">银行卡</label>
+                <div class="bankInfo">
+                    <p class="p-bankInfo">{{ bankName }} (尾号{{ accNo }})</p>
+                    <p class="p-astrict">{{tip}}</p>
+                </div>
+            </div>
+        </div>
+        <p class="availableBalance">可用余额: <span>{{ accountBalance }}</span>元</p>
+        <div class="form-box">
+            <label class="form-label">充值金额</label>
+            <input class="rechargeMoney" type="number" placeholder="充值金额100元起" value="{{amount}}" v-model="money"/>
+        </div>
+        <button id="rechargeBtn"class="btnRecharge" v-on:click="showDialog" disabled="true">充值</button>
+    </section>
+
+</article>
+</body>
+<script src="scripts/common/vue.js"></script>
+<script src="scripts/common/vue-resource.min.js"></script>
+<script src="scripts/common/custom-function.js"></script>
+<script src="scripts/myCenter/recharge.js"></script>
+</html>

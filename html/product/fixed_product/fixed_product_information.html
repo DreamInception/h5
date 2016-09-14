@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta name="format-detection" content="telephone=no">
+		<base href="/h5/">
+		<link rel="stylesheet" href="css/root.css">
+		<link rel="stylesheet" href="css/base.css">
+		<script src="scripts/common/jquery-2.0.3.min.js"></script>
+		<link rel="stylesheet" href="css/product/product.module.css">
+
+		<title>多肉理财</title>
+	</head>
+
+	<body>
+		<article class="product-info-container" id="product-info-container" v-cloak>
+			<header class="f-cb">
+				<a href="javascript:history.go(-1)" class="f-fl">
+					<img src="images/back.png" alt="" class="returnArrow">
+				</a>
+        </a>
+				<span class="title">产品详情</span>
+			</header>
+			<section>
+				<ul class="pro-intro-block">
+					<li>
+						产品名称: {{productData.targetName}}
+					</li>
+					<li>
+						产品类型: 定期
+					</li>
+					<li>
+						产品规模: {{productData.targetAmount}}元
+					</li>
+					<li>
+						产品期限: {{productData.day}}天
+					</li>
+					<li>
+						起购金额: {{productData.minAmount}}元
+					</li>
+				</ul>
+				<p class="subtitle">预期收益</p>
+				<ul class="pro-future-profit-block">
+					<li>
+						预期年化收益率：{{productData.yearRateStr}}
+					</li>
+					<li>
+						起息日：{{productData.beginDate}}
+					</li>
+					<li>
+						到期日：{{productData.endDate}}
+					</li>
+					<li>
+						到期赎回方式：到期一次性归还本金与收益
+					</li>
+				</ul>
+				<p class="subtitle">购买准备</p>
+				<ul class="buy-prepare-block">
+
+					<li>
+						1. 注册并实名认证
+					</li>
+					<li>
+						2. 绑定银行卡
+					</li>
+					<li>
+						3. 提前充值，可提高抢购成功率
+					</li>
+				</ul>
+				<p class="subtitle">怎么赎回</p>
+				<ul class="foreclose-block">
+					<p>产品到期后，本金与收益将自动赎回至你的多肉零钱包账户中。未到期前不能提前赎回（注：本产品存在提前到期的可能性，若产品提前到期，本金与实际产品期限内的收益将提前自动赎回至您的零钱包账户中）</p>
+				</ul>
+			</section>
+		</article>
+		<script src="scripts/common/vue.js"></script>
+		<script src="scripts/common/vue-resource.min.js"></script>
+		<script src="scripts/common/custom-function.js"></script>
+		<script src="scripts/product/fixed_product/fixed_session_storage.js"></script>
+		<script src="scripts/product/product_information.js"></script>
+	</body>
+
+</html>
