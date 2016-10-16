@@ -19,140 +19,202 @@
 <body>
 
 <article class="index-main-container greyBg" id="index-main-container" v-cloak>
-    <header class="f-cb">
-        <img src="images/doro.png" alt="" class="doroLogo">
-        <a href="html/user/login.html" class="loginLink f-fr" v-show="!isLogin">登录</a>
-        <a href="html/myCenter/asset_index.html" class="centerLink f-fr" v-show="isLogin">
-            <img src="images/centerLogo.png" alt="">
-        </a>
-    </header>
-    <div class="swiper-container">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide"><a
-                    href="http://mp.weixin.qq.com/s?__biz=MzI5NDAzOTc5Ng==&mid=502158004&idx=1&sn=0710a832f522dc8c0b87af65817566f3&scene=1&srcid=0816BBw1SUQdpJPbgr5Fq5mK&from=groupmessage&isappinstalled=0#wechat_redirect"><img
-                    src="images/banner_1.jpg" alt="" width="100%" height="100%"></a></div>
-            <div class="swiper-slide"><a
-                    href="http://mp.weixin.qq.com/s?__biz=MzI5NDAzOTc5Ng==&mid=502158001&idx=1&sn=31def94cb90d5470ce8738165c8522d1&scene=0#wechat_redirect"><img
-                    src="images/banner_2.jpg" alt="" width="100%" height="100%"></a></div>
-            <div class="swiper-slide"><a
-                    href="http://mp.weixin.qq.com/s?__biz=MzI5NDAzOTc5Ng==&mid=502157995&idx=1&sn=c3bd88bdfea23d9977e616e02f26a96a&scene=0#wechat_redirect"><img
-                    src="images/banner_3.jpg" alt="" width="100%" height="100%"></a></div>
-            <div class="swiper-slide"><a
-                    href="http://mp.weixin.qq.com/s?__biz=MzI5NDAzOTc5Ng==&mid=502158015&idx=1&sn=73f43ace8223eea511d8ce4b27d0b588&scene=0#wechat_redirect"><img
-                    src="images/banner_4.jpg" alt="" width="100%" height="100%"></a></div>
-        </div>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
-    <section>
-        <div class="proTitle">
-            <img src="images/h_logo.png" class="pro_Icon">
-            <span>热门产品</span>
-        </div>
-        <div class="hotProArea">
-            <p>活期宝</p>
-            <a href="html/product/current_product/current_productDetails.html" class="circleBg">
-                <label>预期年化收益率</label>
-                <div class="number">
-                    <span class="plan-rate-num" style="padding-left: 1rem;">{{ planrate_start }}</span>
-                    <span>~</span>
-                    <span class="plan-rate-num">{{ planrate_end }}<em>%</em></span>
-                </div>
-                <div class="curr-text f-cb" style="white-space: nowrap">
-                    <span class="">随时存取</span>
-                    <span class="" style="margin-left: 0.5rem;">|</span>
-                    <span class="" style="margin-left: 0.5rem;">100元起购</span>
-                </div>
-            </a>
-            <a href="html/product/current_product/current_productDetails.html" class="curInvestBtn">立即投资</a>
-        </div>
-    </section>
-    <section class="otherPros">
-        <div class="proTitle">
-            <img src="images/m_logo.png" class="pro_Icon">
-            <span>更多产品</span>
-        </div>
-        <ul>
-            <li v-for="item in listData" class="other_pro_list">
-                <div class="marginItem"></div>
-                <a href="html/product/fixed_product/fixed_product_details.html?targetId={{ item.targetId }}&targetState={{item.targetState}}"
-                   class="fixed_target_info" v-if="item.targetState==400">
-                    <p class="target-name">{{ item.targetName }}
-                        <em class="targetActivityBg" v-show="item.regularTargetAppendRate.appendLable">{{item.regularTargetAppendRate.appendLable}}</em>
-                    </p>
-                    <div class="fixed-target-list f-cb">
-                        <div class="f-fl" style="width: 33%">
-                            <p class="plan-rate-num">{{ item.yearRateStr }}</p>
-                            <label>预期年化收益率</label>
-                        </div>
-                        <div class="f-fl line"></div>
-                        <div class="f-fl time">
-                            <p class="invest-day">{{ item.days }}天</p>
-                            <label>投资期限</label>
-                        </div>
-                    </div>
-                    <div class="investButton" v-if="item.targetState==400"></div>
-                    <div v-else>
-                        <div class="waitingButton" v-if="item.targetState==300">
-                            <p>{{item.onsaleTime}}</p>
-                            <p>开抢</p>
-                        </div>
-                        <div class="doneButton" v-else disabled="disabled"></div>
-                    </div>
+    <div class="contentList" id="wrapper">
+        <div class="scroller">
+            <header class="f-cb">
+                <img src="images/doro.png" alt="" class="doroLogo">
+                <a href="html/user/login.html" class="loginLink f-fr" v-show="!isLogin">登录</a>
+                <a href="html/myCenter/asset_index.html" class="centerLink f-fr" v-show="isLogin">
+                    <img src="images/centerLogo.png" alt="">
                 </a>
-                <div v-else>
-                    <a href="html/product/fixed_product/fixed_product_details.html?targetId={{ item.targetId }}&targetState={{item.targetState}}"
-                       class="fixed_target_info" v-if="item.targetState==300">
-                        <p class="target-name">{{ item.targetName }}</p>
-                        <div class="fixed-target-list f-cb">
-                            <div class="f-fl"  style="width: 33%">
-                                <p class="plan-rate-num">{{ item.yearRateStr }}</p>
-                                <label>预期年化收益率</label>
-                            </div>
-                            <div class="f-fl line"></div>
-                            <div class="f-fl time">
-                                <p class="invest-day">{{ item.days }}天</p>
-                                <label>投资期限</label>
-                            </div>
-                        </div>
-                        <div class="investButton" v-if="item.targetState==400"></div>
-                        <div v-else>
-                            <div class="waitingButton" v-if="item.targetState==300">
-                                <p>{{item.onsaleTime}}</p>
-                                <p>开抢</p>
-                            </div>
-                            <div class="doneButton" v-else disabled="disabled"></div>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="fixed_target_info" v-else disabled="disabled">
-                        <p class="target-name">{{ item.targetName }}</p>
-                        <div class="fixed-target-list f-cb">
-                            <div class="f-fl"  style="width: 33%">
-                                <p class="plan-rate-num">{{ item.yearRateStr }}</p>
-                                <label>预期年化收益率</label>
-                            </div>
-                            <div class="f-fl line"></div>
-                            <div class="f-fl time">
-                                <p class="invest-day">{{ item.days }}天</p>
-                                <label>投资期限</label>
-                            </div>
-                        </div>
-                        <div class="investButton" v-if="item.targetState==400"></div>
-                        <div v-else>
-                            <div class="waitingButton" v-if="item.targetState==300">
-                                <p>{{item.onsaleTime}}</p>
-                                <p>开抢</p>
-                            </div>
-                            <div class="doneButton" v-else disabled="disabled"></div>
-                        </div>
-                    </a>
+            </header>
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><a
+                            href="http://mp.weixin.qq.com/s?__biz=MzI5NDAzOTc5Ng==&mid=502158004&idx=1&sn=0710a832f522dc8c0b87af65817566f3&scene=1&srcid=0816BBw1SUQdpJPbgr5Fq5mK&from=groupmessage&isappinstalled=0#wechat_redirect"><img
+                            src="images/banner_1.jpg" alt="" width="100%" height="100%"></a></div>
+                    <div class="swiper-slide"><a
+                            href="http://mp.weixin.qq.com/s?__biz=MzI5NDAzOTc5Ng==&mid=502158001&idx=1&sn=31def94cb90d5470ce8738165c8522d1&scene=0#wechat_redirect"><img
+                            src="images/banner_2.jpg" alt="" width="100%" height="100%"></a></div>
+                    <div class="swiper-slide"><a
+                            href="http://mp.weixin.qq.com/s?__biz=MzI5NDAzOTc5Ng==&mid=502157995&idx=1&sn=c3bd88bdfea23d9977e616e02f26a96a&scene=0#wechat_redirect"><img
+                            src="images/banner_3.jpg" alt="" width="100%" height="100%"></a></div>
+                    <div class="swiper-slide"><a
+                            href="http://mp.weixin.qq.com/s?__biz=MzI5NDAzOTc5Ng==&mid=502158015&idx=1&sn=73f43ace8223eea511d8ce4b27d0b588&scene=0#wechat_redirect"><img
+                            src="images/banner_4.jpg" alt="" width="100%" height="100%"></a></div>
                 </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <section>
+                <div class="proTitle">
+                    <img src="images/h_logo.png" class="pro_Icon">
+                    <span>热门产品</span>
+                </div>
+                <div class="hotProArea">
+                    <p class="hpaTitle">活期宝</p>
+                    <!--<a href="html/product/current_product/current_productDetails.html" class="circleBg">-->
+                    <!--<label>预期年化收益率</label>-->
+                    <!--<div class="number">-->
+                    <!--<span class="plan-rate-num" style="padding-left: 1rem;">{{ planrate_start }}</span>-->
+                    <!--<span>~</span>-->
+                    <!--<span class="plan-rate-num">{{ planrate_end }}<em>%</em></span>-->
+                    <!--</div>-->
+                    <!--<div class="curr-text f-cb" style="white-space: nowrap">-->
+                    <!--<span class="">随时存取</span>-->
+                    <!--<span class="" style="margin-left: 0.5rem;">|</span>-->
+                    <!--<span class="" style="margin-left: 0.5rem;">100元起购</span>-->
+                    <!--</div>-->
+                    <!--</a>-->
+                    <!--<a href="html/product/current_product/current_productDetails.html" class="curInvestBtn">立即投资</a>-->
 
-            </li>
-        </ul>
-    </section>
+                    <ul class="posterList">
+                        <a href="html/product/current_product/current_productDetails.html" class="circleBg"
+                           id="circleProduct1">
+                            <!--<a href="html/product/current_product/current_productDetails.html">-->
+                            <div style="position: relative;">
+                                <!--<label>预期年化收益率</label>-->
+                                <div class="number">
+                                    <span class="plan-rate-num" style="padding-left: 1rem;">4.8</span>
+                                    <span>~</span>
+                                    <span class="plan-rate-num">8.8<em>%</em></span>
+                                </div>
+                                <div class="curr-text f-cb" style="white-space: nowrap">
+                                    <span class="">随时存取</span>
+                                    <span class="" style="margin-left: 0.5rem;">|</span>
+                                    <span class="" style="margin-left: 0.5rem;">100元起购</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="circleBg" id="circleProduct2">
+                            <div style="position: relative;">
+                                <!--<label>预期年化收益率</label>-->
+                                <div class="number">
+                                    <span class="plan-rate-num">{{item.yRate}}%</span>
+                                </div>
+                                <div class="curr-text f-cb" style="white-space: nowrap">
+                                    <span class="day">期限{{item.day}}天</span>
+                                    <span class="" style="margin-left: 0.5rem;">|</span>
+                                    <span class="unit-amount" style="margin-left: 0.5rem;">{{item.unitAmount}}元起购</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript:;" class="circleBg" id="circleProduct3">
+                            <div style="position: relative;">
+                                <!--<label>预期年化收益率</label>-->
+                                <div class="number">
+                                    <span class="plan-rate-num">{{item.yRate}}%</span>
+                                </div>
+                                <div class="curr-text f-cb" style="white-space: nowrap">
+                                    <span class="day">期限{{item.day}}天</span>
+                                    <span class="" style="margin-left: 0.5rem;">|</span>
+                                    <span class="unit-amount" style="margin-left: 0.5rem;">{{item.unitAmount}}元起购</span>
+                                </div>
+                            </div>
+                        </a>
+
+
+                    </ul>
+                </div>
+            </section>
+            <section class="otherPros">
+                <div class="proTitle">
+                    <img src="images/m_logo.png" class="pro_Icon">
+                    <span>更多产品</span>
+                </div>
+                <ul>
+                    <li v-for="item in listData" class="other_pro_list">
+                        <div class="marginItem"></div>
+                        <a href="html/product/fixed_product/fixed_product_details.html?targetId={{ item.targetId }}&targetState={{item.targetState}}"
+                           class="fixed_target_info" v-if="item.targetState==400">
+                            <p class="target-name">{{ item.targetName }}
+                                <em class="targetActivityBg" v-show="item.regularTargetAppendRate.appendLable">{{item.regularTargetAppendRate.appendLable}}</em>
+                            </p>
+                            <div class="fixed-target-list f-cb">
+                                <div class="f-fl" style="width: 42%">
+                                    <p class="plan-rate-num">{{ item.yearRateStr }}<span class="addRate"
+                                                                                         v-if="item.regularTargetAppendRate">+{{item.addRateStr}}</span>
+                                    </p>
+                                    <label>预期年化收益率</label>
+                                </div>
+                                <div class="f-fl line"></div>
+                                <div class="f-fl time">
+                                    <p class="invest-day">{{ item.day }}天</p>
+                                    <label>投资期限</label>
+                                </div>
+                            </div>
+                            <div class="investButton" v-if="item.targetState==300"></div>
+                            <div v-else>
+                                <div class="waitingButton" v-if="item.targetState==400">
+                                    <p>{{item.onsaleTime}}</p>
+                                    <p>开抢</p>
+                                </div>
+                                <div class="doneButton" v-else disabled="disabled"></div>
+                            </div>
+                        </a>
+                        <div v-else>
+                            <a href="html/product/fixed_product/fixed_product_details.html?targetId={{ item.targetId }}&targetState={{item.targetState}}"
+                               class="fixed_target_info" v-if="item.targetState==300">
+                                <p class="target-name">{{ item.targetName }}</p>
+                                <div class="fixed-target-list f-cb">
+                                    <div class="f-fl" style="width: 42%">
+                                        <p class="plan-rate-num">{{ item.yRate }}<span class="addRate"
+                                                                                       v-if="item.regularTargetAppendRate">+{{item.addRateStr}}</span>
+                                        </p>
+                                        <label>预期年化收益率</label>
+                                    </div>
+                                    <div class="f-fl line"></div>
+                                    <div class="f-fl time">
+                                        <p class="invest-day">{{ item.day }}天</p>
+                                        <label>投资期限</label>
+                                    </div>
+                                </div>
+                                <div class="investButton" v-if="item.targetState==300"></div>
+                                <div v-else>
+                                    <div class="waitingButton" v-if="item.targetState==400">
+                                        <p>{{item.onsaleTime}}</p>
+                                        <p>开抢</p>
+                                    </div>
+                                    <div class="doneButton" v-else disabled="disabled"></div>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="fixed_target_info" v-else disabled="disabled">
+                                <p class="target-name">{{ item.targetName }}</p>
+                                <div class="fixed-target-list f-cb">
+                                    <div class="f-fl" style="width: 42%">
+                                        <p class="plan-rate-num">{{ item.yearRateStr }}<span class="addRate"
+                                                                                             v-if="item.regularTargetAppendRate">+{{item.addRateStr}}</span>
+                                        </p>
+                                        <label>预期年化收益率</label>
+                                    </div>
+                                    <div class="f-fl line"></div>
+                                    <div class="f-fl time">
+                                        <p class="invest-day">{{ item.day }}天</p>
+                                        <label>投资期限</label>
+                                    </div>
+                                </div>
+                                <div class="investButton" v-if="item.targetState==300"></div>
+                                <div v-else>
+                                    <div class="waitingButton" v-if="item.targetState==400">
+                                        <p>{{item.onsaleTime}}</p>
+                                        <p>开抢</p>
+                                    </div>
+                                    <div class="doneButton" v-else disabled="disabled"></div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </li>
+                </ul>
+                <div id="pullUp">
+                    <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+                </div>
+            </section>
+        </div>
+    </div>
     <section class="downloadSec" v-show="downloadDisplay">
         <a href="javascript:;" class="closeBtn" @click="closeLayer">
             <img src="images/close.png" alt="">
@@ -166,11 +228,13 @@
             <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.duorou.duorouandroid#opened" class="download">立即下载</a>
         </div>
     </section>
+
 </article>
 <script src="https://npmcdn.com/vue@1.0.26/dist/vue.min.js"></script>
 <!--<script src="scripts/common/vue.js"></script>-->
 <script src="scripts/common/vue-resource.min.js"></script>
 <script src="scripts/common/custom-function.js"></script>
+<script src="scripts/common/mobileRotate.js"></script>
 <script src="scripts/activities/index.js"></script>
 </body>
 

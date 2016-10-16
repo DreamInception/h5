@@ -1,0 +1,222 @@
+/*
+* current_asset.html
+*/
+.currentBao_container {
+  position: relative;
+  overflow: auto;
+}
+.currentBao_container .current_asset_top {
+  background: #4a4a4a;
+  width: 100%;
+  height: 20rem;
+}
+.currentBao_container .current_asset_top .asset_holder p:first-child {
+  padding-top: 3.4rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+.currentBao_container .current_asset_top .asset_holder p:last-child {
+  padding-top: 1rem;
+  font-size: 4rem;
+  line-height: 4rem;
+  color: #fff;
+  text-align: center;
+}
+.currentBao_container .current_asset_top .asset_benefit {
+  width: 72%;
+  display: block;
+  margin-top: 2.7rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.currentBao_container .current_asset_top .asset_benefit .name {
+  padding-top: 0;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #fff;
+  text-align: left;
+}
+.currentBao_container .current_asset_top .asset_benefit .value {
+  padding-top: 1rem;
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  color: #c3b38a;
+  text-align: right;
+}
+.currentBao_container .current_asset_top .asset_benefit .line {
+  background: #ffffff;
+  width: 1px;
+  height: 4rem;
+}
+.currentBao_container .current_asset_list .each_currentBao {
+  width: 100%;
+  height: 13.4rem;
+  background: #fff;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.currentBao_container .current_asset_list .each_currentBao .ec_caption img {
+  width: 1.5rem;
+}
+.currentBao_container .current_asset_list .each_currentBao .ec_caption span {
+  padding-top: 0;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: #3e3a39;
+  text-align: left;
+  padding-left: 1rem;
+}
+.currentBao_container .current_asset_list .each_currentBao .number {
+  padding-top: 1.8rem;
+}
+.currentBao_container .current_asset_list .each_currentBao .number .f-fl {
+  padding-top: 0;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  color: #ac9354;
+  text-align: left;
+}
+.currentBao_container .current_asset_list .each_currentBao .number .f-fr {
+  padding-top: 0;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  color: #9b9b9b;
+  text-align: right;
+}
+.currentBao_container .current_asset_list .each_currentBao .info {
+  padding-top: 0.4rem;
+}
+.currentBao_container .current_asset_list .each_currentBao .info .f-fl {
+  padding-top: 0;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  color: #9b9b9b;
+  text-align: left;
+}
+.currentBao_container .current_asset_list .each_currentBao .info .f-fr {
+  padding-top: 0;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  color: #9b9b9b;
+  text-align: right;
+}
+.currentBao_container .current_asset_list .each_currentBao .during {
+  padding-top: 2.5rem;
+  padding-top: 0;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  color: #9b9b9b;
+  text-align: right;
+}
+.currentBao_container .current_asset_list .each_currentBao .during .days {
+  color: #ac9354;
+}
+.currentBao_container .buttons {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.currentBao_container .outBtn {
+  padding-top: 6.5rem;
+  width: 49%;
+  height: 4rem;
+  background: #fff;
+  padding-top: 0;
+  font-size: 2rem;
+  line-height: 4rem;
+  color: #ac9354;
+  text-align: center;
+}
+.currentBao_container .inBtn {
+  padding-top: 6.5rem;
+  width: 49%;
+  height: 4rem;
+  background: #ac9354;
+  padding-top: 0;
+  font-size: 2rem;
+  line-height: 4rem;
+  color: #ac9354;
+  text-align: center;
+}
+
+.business_record_container {
+  position: relative;
+  overflow: auto;
+}
+.business_record_container .menuControl {
+  width: 1rem;
+  vertical-align: center;
+  transition: transform 1s;
+  -webkit-transition: -webkit-transform 1s;
+  -moz-transition: -moz-transform 1s;
+  padding-left: 0.5rem;
+}
+.business_record_container .clock {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+}
+.business_record_container .antiClock {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+}
+.business_record_container .menu_list {
+  position: absolute;
+  background: #fff;
+  width: 100%;
+}
+.business_record_container .menu_list .each_menu {
+  margin: 1rem 4%;
+  border-bottom: 1px solid #e6e6e6;
+}
+.business_record_container .menu_list .each_menu span {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: #717071;
+  text-align: left;
+}
+.business_record_container .menu_list .each_menu img {
+  width: 1.4rem;
+}
+.business_record_container .record_list {
+  background: #fff;
+}
+.business_record_container .record_list .rl_info {
+  padding: 1.7rem 4%;
+  border: 1px solid #e6e6e6;
+}
+.business_record_container .record_list .rl_info .f-fl p:first-child {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: #4a4a4a;
+  text-align: left;
+}
+.business_record_container .record_list .rl_info .f-fl p:last-child {
+  padding-top: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  color: #9b9b9b;
+  text-align: left;
+}
+.business_record_container .record_list .rl_info .f-fr p:first-child {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: #4a4a4a;
+  text-align: right;
+}
+.business_record_container .record_list .rl_info .f-fr p:last-child {
+  padding-top: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  color: #4a4a4a;
+  text-align: right;
+}
+
+/*# sourceMappingURL=myCenter_dtls.css.map */

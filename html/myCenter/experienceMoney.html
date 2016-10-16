@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="sass/myCenter_dtls.css">
+    <script src="scripts/common/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="css/myCenter/experienceMoney.css">
+    <title>多肉理财</title>
+</head>
+<body>
+<article class="experienceMoney_container greyBg" id="experienceMoney_container" v-cloak>
+    <div class="contentList" id="wrapper">
+        <div class="scroller">
+            <header class="f-cb">
+                <a href="javascript:history.go(-1)" class="f-fl">
+                    <img src="images/back.png" alt="" class="returnArrow">
+                </a>
+                <span>体验金</span>
+            </header>
+            <section class="experienceMoney_top">
+                <div class="experienceMoney_holder">
+                    <p class="name">当前体验金（元）</p>
+                    <p class="value">{{activityAmount}}</p>
+                </div>
+                <aside class="experienceMoney_detail f-cb">
+                    <div class="item f-fl">
+                        <p class="name">已使用体验金（元）</p>
+                        <p class="value">{{historyAmount}}</p>
+                    </div>
+                    <div class="item f-fr">
+                        <p class="name">累计收益（元）</p>
+                        <p class="value">{{interestAmount}}</p>
+                    </div>
+                </aside>
+            </section>
+            <ul class="experienceMoney_list" id="experienceMoney_list">
+                <li v-for="item in listData">
+                    <div v-if="item.status == '生息中'">
+                        <p class="item_money">{{ item.amountStr }}<span>元</span></p>
+                        <div class="item_detail">
+                            <div class="status f-fl">
+                                <img src="images/ing.png">
+                            </div>
+                            <div class="info f-fr">
+                                <p>年化收益率：<span>{{ item.yearRateStr }}</span></p>
+                                <p>预期收益：<span class="benefit">{{ item.preAmount }}元</span></p>
+                                <p>生息周期：<span>{{ item.beginDateStr }}-{{ item.endDateStr }}</span></p>
+                            </div>
+                        </div>
+                        <div class="f-cb"></div>
+                    </div>
+                    <div v-if="item.status == '结息中'">
+                        <p class="item_money">{{ item.amountStr }}<span>元</span></p>
+                        <div class="item_detail">
+                            <div class="status f-fl">
+                                <img src="images/jiexi.png">
+                            </div>
+                            <div class="info f-fr">
+                                <p>年化收益率：<span>{{ item.yearRateStr }}</span></p>
+                                <p>待收收益：<span class="benefit">{{ item.interestAmount }}元</span></p>
+                                <p>生息周期：<span>{{ item.beginDateStr }}-{{ item.endDateStr }}</span></p>
+                            </div>
+                        </div>
+                        <div class="f-cb"></div>
+                    </div>
+                    <div v-if="item.status == '已结息'">
+                        <p class="item_money">{{ item.amountStr }}<span>元</span></p>
+                        <div class="item_detail">
+                            <div class="status f-fl">
+                                <img src="images/yijiexi.png">
+                            </div>
+                            <div class="info f-fr">
+                                <p>年化收益率：<span>{{ item.yearRateStr }}</span></p>
+                                <p>到账收益：<span class="benefit">{{ item.interestAmount }}元</span></p>
+                                <p>生息周期：<span>{{ item.beginDateStr }}-{{ item.endDateStr }}</span></p>
+                            </div>
+                        </div>
+                        <div class="f-cb"></div>
+                    </div>
+                </li>
+            </ul>
+            <div id="pullUp">
+                <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+            </div>
+            <div class="noMoreData">没有更多数据</div>
+        </div>
+    </div>
+    
+</article>
+<script src="scripts/common/vue.js"></script>
+<script src="scripts/common/vue-resource.min.js"></script>
+<script src="scripts/common/iscroll.js"></script>
+<script src="scripts/common/custom-function.js"></script>
+<script src="scripts/myCenter/experienceMoney.js"></script>
+</body>
+</html>

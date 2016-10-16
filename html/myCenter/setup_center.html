@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="scripts/common/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="css/myCenter/myCenter.module.css">
+    <title>多肉理财</title>
+</head>
+<body>
+<section class="setup_index_container greyBg" id="setup_index_container">
+    <header class="f-cb">
+        <a href="javascript:history.go(-1)" class="f-fl">
+            <img src="images/back.png" alt="" class="returnArrow">
+        </a>
+        <span>个人中心</span>
+    </header>
+    <div class="user_profile">
+        <img src="images/avatar_default.png" alt="">
+
+        <p class="welcome_txt" v-show="isBind">您好，{{realName}}</p>
+        <p class="welcome_txt" v-show="!isBind">您好，{{mobile}}</p>
+    </div>
+    <div class="detail_list">
+        <a href="javascript:;" class="f-cb">
+            <div class="f-fl left">
+                手机号码
+            </div>
+            <div class="f-fr right">
+                <span>{{mobile}}</span>
+            </div>
+        </a>
+        <a v-bind:href="bindUrl" class="f-cb">
+            <div class="f-fl left ">
+                姓名
+            </div>
+            <div class="f-fr right">
+                <span v-show="isBind">{{realName}}</span>
+                <span v-show="!isBind">未认证</span>
+                <img src="images/arrows_right.png" alt="" v-show="!isBind">
+            </div>
+        </a>
+        <a v-bind:href="bindUrl" class="f-cb">
+            <div class="f-fl left">
+                身份证号
+
+            </div>
+            <div class="f-fr right">
+                <span v-show="isBind">{{idCard}}</span>
+                <span v-show="!isBind">未认证</span>
+                <img src="images/arrows_right.png" alt="" v-show="!isBind">
+            </div>
+        </a>
+        <a v-bind:href="bindUrl" class="f-cb">
+            <div class="f-fl left">
+                银行卡
+
+            </div>
+            <div class="f-fr right">
+                <span v-show="isBind">{{bankName}} (**{{accNo}})</span>
+                <span v-show="!isBind">未认证</span>
+                <img src="images/arrows_right.png" alt="" v-show="!isBind">
+            </div>
+        </a>
+    </div>
+    <a href="/h5/html/user/resetPsw.html" class="f-cb resetPsw">
+        <div class="f-fl left">
+            修改登录密码
+
+        </div>
+        <div class="f-fr right">
+            <img src="images/arrows_right.png" alt="">
+        </div>
+    </a>
+    <button class="logout" v-on:click="logout">安全退出</button>
+</section>
+<script src="scripts/common/vue.js"></script>
+<script src="scripts/common/vue-resource.min.js"></script>
+<script src="scripts/common/custom-function.js"></script>
+<script src="scripts/myCenter/setup_center.js"></script>
+</body>
+</html>

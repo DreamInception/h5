@@ -1,0 +1,188 @@
+/*
+* current_asset.html
+*/
+$goldFont: #ac9354;
+@mixin fontStyle($pdT,$fontSize,$lineH,$color,$align) {
+  padding-top: $pdT;
+  font-size: $fontSize;
+  line-height: $lineH;
+  color: $color;
+  text-align: $align;
+}
+
+@mixin boxSizing() {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.currentBao_container {
+  position: relative;
+  overflow: auto;
+  .current_asset_top {
+    background: #4a4a4a;
+    width: 100%;
+    height: 20rem;
+    .asset_holder p:first-child {
+      @include fontStyle(3.4rem, 1.5rem, 1.5rem, #fff, center);
+    }
+    .asset_holder p:last-child {
+      @include fontStyle(1rem, 4rem, 4rem, #fff, center);
+    }
+    .asset_benefit {
+      width: 72%;
+      display: block;
+      margin-top: 2.7rem;
+      margin-left: auto;
+      margin-right: auto;
+      .name {
+        @include fontStyle(0, 1rem, 1rem, #fff, left);
+      }
+      .value {
+        @include fontStyle(1rem, 2.4rem, 2.4rem, #c3b38a, right);
+      }
+      .line {
+        background: #ffffff;
+        width: 1px;
+        height: 4rem;
+      }
+    }
+  }
+  .current_asset_list .each_currentBao {
+    width: 100%;
+    height: 13.4rem;
+    background: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    @include boxSizing();
+    .ec_caption {
+      img {
+        width: 1.5rem;
+      }
+      span {
+        @include fontStyle(0, 1.6rem, 1.6rem, #3e3a39, left);
+        padding-left: 1rem;
+      }
+    }
+    .number {
+      padding-top: 1.8rem;
+      .f-fl {
+        @include fontStyle(0, 1.8rem, 1.8rem, $goldFont, left);
+      }
+      .f-fr {
+        @include fontStyle(0, 1.8rem, 1.8rem, #9b9b9b, right);
+      }
+    }
+    .info {
+      padding-top: 0.4rem;
+      .f-fl {
+        @include fontStyle(0, 1.2rem, 1.2rem, #9b9b9b, left);
+      }
+      .f-fr {
+        @include fontStyle(0, 1.2rem, 1.2rem, #9b9b9b, right);
+      }
+    }
+    .during {
+      padding-top: 2.5rem;
+      @include fontStyle(0, 1.2rem, 1.2rem, #9b9b9b, right);
+      .days {
+        color: $goldFont;
+      }
+    }
+  }
+  .buttons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .outBtn {
+    padding-top: 6.5rem;
+    width: 49%;
+    height: 4rem;
+    background: #fff;
+    @include fontStyle(0, 2rem, 4rem, $goldFont, center);
+  }
+  .inBtn {
+    padding-top: 6.5rem;
+    width: 49%;
+    height: 4rem;
+    background: $goldFont;
+    @include fontStyle(0, 2rem, 4rem, $goldFont, center);
+  }
+}
+
+.business_record_container {
+  position: relative;
+  overflow: auto;
+  .menuControl {
+    width: 1rem;
+    vertical-align: center;
+    transition: transform 1s;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+  }
+  .clock {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+  }
+  .antiClock {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+  }
+  .menu_list {
+    position: absolute;
+    background: #fff;
+    .each_menu {
+      padding: 1rem 4%;
+      border:1px solid #e6e6e6;
+      span {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        color: #717071;
+        text-align: left;
+      }
+      img {
+        width: 1.4rem;
+      }
+
+    }
+  }
+  .record_list {
+    background: #fff;
+    .rl_info {
+      padding: 1.7rem 4%;
+      border:1px solid #e6e6e6;
+      .f-fl p:first-child {
+        font-size:1.6rem;
+        line-height: 1.6rem;
+        color:#4a4a4a;
+        text-align:left;
+      }
+      .f-fl p:last-child {
+        padding-top: 1rem;
+        font-size:1.3rem;
+        line-height: 1.3rem;
+        color:#9b9b9b;
+        text-align:left;
+      }
+      .f-fr p:first-child {
+        font-size:1.6rem;
+        line-height: 1.6rem;
+        color:#4a4a4a;
+        text-align:right;
+      }
+      .f-fr p:last-child {
+        padding-top: 1rem;
+        font-size:1.3rem;
+        line-height: 1.3rem;
+        color:#4a4a4a;
+        text-align:right;
+      }
+    }
+  }
+
+}
+

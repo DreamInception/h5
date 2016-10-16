@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="scripts/common/swiper/swiper.min.js"></script>
+    <script src="scripts/common/jquery-2.0.3.min.js"></script>
+    <script src="scripts/common/swiper/swiper.jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/activities/test.css">
+    <title>多肉理财</title>
+    <style>
+        .posterList{
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .circleBg{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<article class="index-main-container greyBg" id="index-main-container">
+
+    <section>
+        <div class="proTitle">
+            <img src="images/h_logo.png" class="pro_Icon">
+            <span>热门产品</span>
+        </div>
+        <div class="hotProArea">
+
+            <ul class="posterList">
+                <li class="circleBg">
+                    <div style="position: relative;">
+                        <!--<label>预期年化收益率</label>-->
+                        <div class="number">
+                            <span class="plan-rate-num" style="padding-left: 1rem;">4.8</span>
+                            <span>~</span>
+                            <span class="plan-rate-num">8.8<em>%</em></span>
+                        </div>
+                        <div class="curr-text f-cb" style="white-space: nowrap">
+                            <span class="">随时存取</span>
+                            <span class="" style="margin-left: 0.5rem;">|</span>
+                            <span class="" style="margin-left: 0.5rem;">100元起购</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="circleBg small">
+                    <div style="position: relative;">
+                        <!--<label>预期年化收益率</label>-->
+                        <div class="number">
+                            <span class="plan-rate-num" style="padding-left: 1rem;">2</span>
+                            <span>~</span>
+                            <span class="plan-rate-num">4<em>%</em></span>
+                        </div>
+                        <div class="curr-text f-cb" style="white-space: nowrap">
+                            <span class="">随时存取</span>
+                            <span class="" style="margin-left: 0.5rem;">|</span>
+                            <span class="" style="margin-left: 0.5rem;">100元起购</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="circleBg small">
+                    <div style="position: relative;">
+                        <!--<label>预期年化收益率</label>-->
+                        <div class="number">
+                            <span class="plan-rate-num" style="padding-left: 1rem;">6</span>
+                            <span>~</span>
+                            <span class="plan-rate-num">8<em>%</em></span>
+                        </div>
+                        <div class="curr-text f-cb" style="white-space: nowrap">
+                            <span class="">随时存取</span>
+                            <span class="" style="margin-left: 0.5rem;">|</span>
+                            <span class="" style="margin-left: 0.5rem;">100元起购</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+</article>
+<script src="scripts/common/mobileRotate.js"></script>
+<script>
+    $(".posterList").mobileRotate({
+        containerWidth: $(this).width()*0.8,
+        containerHeight: $(this).width()*0.5,
+        posterWidth: $(this).width()*0.5,
+        posterHeight: $(this).width()*0.5,
+        scale: 0.7,
+        delay: 500,
+        speed: 500,
+        autoplay: false
+    });
+</script>
+<!--<script src="https://npmcdn.com/vue@1.0.26/dist/vue.min.js"></script>-->
+<!--<script src="scripts/common/vue-resource.min.js"></script>-->
+<!--<script src="scripts/common/custom-function.js"></script>-->
+<!--<script src="scripts/activities/index.js"></script>-->
+</body>
+
+</html>

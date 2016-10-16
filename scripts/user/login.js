@@ -23,6 +23,7 @@ var vm=new Vue({
         	var vm = this;
 			vm.$set('postData.userMobile', this.mobile);
 			vm.$set('postData.userPwd', this.passwd);
+			storage.set('mobile', enycryptPhoneNum(this.mobile));
         	rest.post({
         		url: vm.apiUrl,
         		data : vm.postData

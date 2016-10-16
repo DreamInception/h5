@@ -23,18 +23,19 @@
             <span>设置新密码</span>
         </header>
         <section>
-            <p>已发送短信验证码至手机<span>{{ mobile }}</span></p>
+            <p>已发送短信验证码至手机<span>{{ mobileText }}</span></p>
             <div class="form-input-box">
                 <label class="form-label">短信验证码</label>
                 <input class="phoneNum" type="text" placeholder="请输入短信验证码"  style="text-indent: 10rem;" v-model="smsText">
-                <button class="sendBtn" v-on:click="sendSms">重发</button>
+                <!--<button class="sendBtn" v-on:click="sendSms">重发</button>-->
+                <button id="sendBtn" class="sendBtn" v-bind:class="{ 'sendBtn-default-Bg': bgStatus, 'sendBtn-disabled-Bg': !bgStatus}"  v-on:click="sendSms"  v-bind="{ disabled: disableAttr}" v-html="sendTxt" disabled="true"></button>
             </div>
             <div class="form-input-box">
                 <label class="form-label">新密码</label>
-                <input class="password" type="text" placeholder="请输入6-16位数字或字母" v-model="password">
-                <a href="javascript:;" class="switch">
-                    <img src="images/eyelash_assets.png" class="eyeClose" alt="">
-                    <img src="images/eye_assets.png" class="eyeOpen" style="display: none;" alt="">
+                <input class="password" type={{type}} placeholder="请输入6-16位数字或字母" v-model="password">
+                <a href="javascript:;" class="switch" v-on:click="switch">
+                    <img src="images/eyelash_assets.png" class="eyeClose" alt="" v-show="!pswDisplay">
+                    <img src="images/eye_assets.png" class="eyeOpen" style="display: none;" alt="" v-show="pswDisplay">
                 </a>
             </div>
             <button class="loginBtn" v-on:click="setPassword">完成</button>

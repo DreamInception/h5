@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="scripts/common/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="css/myCenter/myCenter.module.css">
+    <title>多肉理财</title>
+</head>
+<body>
+<article class="business_record_container" id="business_record_container" v-cloak>
+    <header class="f-cb header">
+        <a href="javascript:history.go(-1)" class="f-fl">
+            <img src="images/back.png" alt="" class="returnArrow">
+        </a>
+        <span class="record_title">全部</span>
+        <a href="javascript:;" @click="switchMenu">
+            <img src="images/arrows_down.png" alt="" class="menuControl" v-show="menuOpen">
+            <img src="images/arrows_right.png" alt="" class="menuControl" v-show="!menuOpen">
+        </a>
+    </header>
+    <section class="record_body">
+        <ul class="menu_list f-cb">
+            <li class="each_menu">
+                <a href="javascript:void(0)" @click="openRecord(0,'全部')">
+                    <span class="f-fl">全部</span>
+                    <img src="images/gou_trade_record.png" class="selectGou f-fr" v-show="selectGou">
+                </a>
+            </li>
+            <li class="each_menu f-cb">
+                <a href="javascript:void(0)" @click="openRecord(1,'投资')">
+                    <span class="f-fl">投资</span>
+                    <img src="images/gou_trade_record.png" class="selectGou f-fr" v-show="selectGou">
+                </a>
+            </li>
+            <li class="each_menu f-cb">
+                <a href="javascript:void(0)" @click="openRecord(2,'转出')">
+                    <span class="f-fl">转出</span>
+                    <img src="images/gou_trade_record.png" class="selectGou f-fr" v-show="selectGou">
+                </a>
+            </li>
+            <li class="each_menu f-cb">
+                <a href="javascript:void(0)" @click="openRecord(3,'充值')">
+                    <span class="f-fl">充值</span>
+                    <img src="images/gou_trade_record.png" class="selectGou f-fr" v-show="selectGou">
+                </a>
+            </li>
+            <li class="each_menu f-cb">
+                <a href="javascript:void(0)" @click="openRecord(4,'取现')">
+                    <span class="f-fl">取现</span>
+                    <img src="images/gou_trade_record.png" class="selectGou f-fr" v-show="selectGou">
+                </a>
+            </li>
+            <li class="each_menu f-cb">
+                <a href="javascript:void(0)" @click="openRecord(5,'其他')">
+                    <span class="f-fl">其他</span>
+                    <img src="images/gou_trade_record.png" class="selectGou f-fr" v-show="selectGou">
+                </a>
+            </li>
+        </ul>
+    </section>
+
+
+    <ul class="record_list">
+        <li class="f-cb rl_info" v-for="item in listData">
+            <div class="f-fl">
+                <p>{{ item.title }}</p>
+                <p>{{ item.formatDate }}</p>
+            </div>
+            <div class="f-fr">
+                <p>{{ item.amountStr }}</p>
+                <p>{{ item.status }}</p>
+            </div>
+        </li>
+    </ul>
+</article>
+<script src="scripts/common/vue.js"></script>
+<script src="scripts/common/vue-resource.min.js"></script>
+<script src="scripts/common/custom-function.js"></script>
+<script src="scripts/myCenter/business_record.js"></script>
+</body>
+</html>

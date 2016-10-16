@@ -1,0 +1,294 @@
+/*------------------------------------------- experienceMoney.html -------------------------------------------*/
+.experienceMoney_container{
+	position: relative;
+}
+.experienceMoney_container .experienceMoney_holder{
+    padding: 3.6rem 0 4.3rem 0;
+    background: #4a4a4a;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.experienceMoney_container .experienceMoney_holder .name{
+    font-size:1.8rem;
+    line-height: 1.8rem;
+    color:rgba(255,255,255,0.69);
+    text-align: center;
+    width: 100%;
+    
+}
+.experienceMoney_container .experienceMoney_holder .value{
+    font-size:4.8rem;
+    line-height: 4.8rem;
+    color:#000;
+    text-align:center;
+    padding-top: 0.2rem;
+    width: 100%;
+    color: #fff;
+    margin-top: 1rem;
+}
+.experienceMoney_container .experienceMoney_detail{
+	padding: 1.8rem 0;
+}
+.experienceMoney_container .experienceMoney_detail .item{
+	width: 49%;
+	text-align: center;
+}
+.experienceMoney_container .experienceMoney_detail .item:first-child{
+	border-right: 1px solid #cdcdcd;
+}
+.experienceMoney_container .experienceMoney_detail .name{
+	font-size: 1.4rem;
+	color: #4a4a4a;
+}
+.experienceMoney_container .experienceMoney_detail .value{
+	font-size: 2.4rem;
+	color: #ac9354;
+}
+.experienceMoney_container .experienceMoney_list{
+	padding: 0 1.6rem;
+}
+.experienceMoney_container .experienceMoney_list li{
+	background: #fff;
+	padding: 1rem 1.5rem 1.6rem 1.8rem;
+	margin-top: .6rem;
+}
+.experienceMoney_container .experienceMoney_list li:first-child{
+	margin: 0;
+}
+.experienceMoney_container .item_money{
+	font-size: 2rem;
+	color: #4a4a4a;
+}
+.experienceMoney_container .item_money span{
+	font-size: 1.2rem;
+}
+.experienceMoney_container .status{
+	width: 18%;
+	margin-left: 4%;
+	margin-top: .6rem;
+}
+.experienceMoney_container .status img{
+	width: 100%;
+}
+.experienceMoney_container .info{
+	width: 73%;
+	font-size: 1.2rem;
+	color: #9b9b9b;
+}
+.experienceMoney_container .benefit{
+	font-size: 1.8rem;
+	color: #fb5f20;
+}
+
+/*------------------------------------------- voucher.html -------------------------------------------*/
+.voucher_container{
+	position: relative;
+}
+.voucher_container .voucher_tab{
+	background: #fff;
+	padding: 0 .9rem;
+	overflow: auto;
+	text-align: center;
+}
+.voucher_container .voucher_tab li{
+	width: 50%;
+	padding: .8rem 0;
+	font-size: 1.4rem;
+	color: #4a4a4a;
+}
+.voucher_container .voucher_tab .tab_selected{
+	color: #ac9354;
+	border-bottom: 2px solid #ac9354;
+}
+.voucher_container .voucher_list_wrap{
+	padding:  0 1.5rem;
+}
+.voucher_container .voucher_list_tyj li{
+	margin-top: 1.2rem;
+	position: relative;
+	height: 13.7rem;
+}
+.voucher_container .voucher_tyj_kgq{
+	background: url(../../images/voucher_tyj.png) no-repeat;
+	background-size: 100% 100%;
+	height: 100%;
+}
+.voucher_container .voucher_tyj_y{
+	background: url(../../images/voucher_tyj_y.png) no-repeat;
+	background-size: 100% 100%;
+	color: #c8c9ca;
+	height: 100%;
+}
+.voucher_container .voucher_wrap{
+	padding: 1.2rem 2.1rem;
+}
+.voucher_container .voucher_tyj_status_kgq{
+	width: 4.1rem;
+	height: 4.1rem;
+	background: url(../../images/voucher_tyj_kgq.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.voucher_container .voucher_tyj_status_ygq, .voucher_tyj_status_ysy{
+	width: 5.8rem;
+	height: 6.8rem;
+	position: absolute;
+	top: 6.1rem;
+	right: 0;
+}
+.voucher_container .voucher_tyj_status_ygq{
+	background: url(../../images/voucher_tyj_ygq.png) no-repeat;
+	background-size: 100%;
+}
+.voucher_container .voucher_tyj_status_ysy{
+	background: url(../../images/voucher_tyj_ysy.png) no-repeat;
+	background-size: 100%;
+}
+.voucher_container .voucher_title{
+	font-size: 1.6rem;
+	line-height: 2.8rem;
+}
+.voucher_container .voucher_tyj_kgq .voucher_title{
+	color: #ac9354;
+}
+.voucher_container .voucher_amount{
+	margin-right: 1rem;
+	font-size: 3rem;
+}
+.voucher_container .voucher_amount i{
+	font-size: 1.8rem;
+	display: block;
+	float: left;
+}
+.voucher_container .voucher_detail{
+	margin-top: 1.8rem;
+	font-size: 1.2rem;
+}
+.voucher_container .voucher_detail .yield{
+	color: #ac9345;
+}
+.voucher_container .voucher_tyj_y .voucher_detail .yield{
+	color: #c8c9ca;
+}
+.voucher_container .voucher_tyj_kgq .voucher_detail, .voucher_container .voucher_jx .voucher_detail{
+	color: #717071;
+}
+.voucher_container .no_voucher{
+	font-size:1.6rem;
+	color:#9b9b9b;
+	text-align: center;
+	margin-top: 5.1rem;
+}
+.voucher_container .voucher_list_jx li{
+	height: 10.8rem;
+	margin-top: 1.2rem;
+	position: relative;
+}
+.voucher_container .voucher_jx{
+	background: url(../../images/voucher_jx.png) no-repeat;
+	background-size: 100% 100%;
+	height: 100%;
+}
+.voucher_container .voucher_jx_y{
+	background: url(../../images/voucher_jx_y.png) no-repeat;
+	background-size: 100% 100%;
+	color: #c8c9ca;
+	height: 100%;
+}
+.voucher_container .voucher_jx_status_kgq{
+	width: 4.1rem;
+	height: 4.1rem;
+	background: url(../../images/voucher_jx_kgq.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.voucher_container .voucher_jx_status_ygq, .voucher_jx_status_ysy{
+	width: 5.3rem;
+	height: 6.3rem;
+	position: absolute;
+	top: 3.7rem;
+	right: 0;
+}
+.voucher_container .voucher_jx_status_ygq{
+	background: url(../../images/voucher_jx_ygq.png) no-repeat;
+	background-size: 100%;
+}
+.voucher_container .voucher_jx_status_ysy{
+	background: url(../../images/voucher_jx_ysy.png) no-repeat;
+	background-size: 100%;
+}
+.voucher_container .voucher_jx .voucher_title{
+	color: #3db9c1;
+}
+.voucher_container .voucher_yield{
+	margin-right: 0.8rem;
+	font-size: 3rem;
+}
+.voucher_container .voucher_yield i{
+	font-size: 1.2rem;
+}
+
+
+
+
+
+
+/*------------------------------------------- withdrawSuccess.html -------------------------------------------*/
+.withdraw-success-container .caption{
+    padding: 4rem 0 0 18%;
+}
+.withdraw-success-container .caption img{
+    width: 12.5%;
+    display: inline-block;
+}
+.withdraw-success-container .caption{
+    line-height: 4rem;
+    font-size:2rem;
+    color:#aa9154;
+    text-align:left;
+    width: 64%;
+    display: block;
+    margin-left: 5%;
+}
+.withdraw-success-container .caption span{
+    padding-left: 0.5rem;
+}
+.withdraw-success-container .rc-content{
+    width: 88%;
+    height: 20.3rem;
+    margin: 2.5rem 6%;
+    background: url("../../images/cc.png") no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    font-size:1.5rem;
+    color:#4a4a4a;
+    text-align:left;
+}
+.withdraw-success-container .rc-content p{
+    padding-top: 2.4rem;
+    padding-left: 2.4rem;
+}
+.withdraw-success-container .rsc_value{
+    padding-left: 2.2rem;
+}
+/*------------------------------------------- withdraw.html -------------------------------------------*/
+.withdraw-container .total_asset{
+    margin-top: 1.1rem;
+    margin-left: 1.7rem;
+    color: #4a4a4a;
+    font-size: 1.2rem;
+}
+.withdraw-container .form-box{
+    background: #fff;
+}
+.withdraw-container .form-box-item{
+    padding: 1.4rem 1.6rem 1.7rem;
+}
+.withdraw-container .form-box-item:first-child{
+
+}

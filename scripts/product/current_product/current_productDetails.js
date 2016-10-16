@@ -32,7 +32,7 @@ var vm = new Vue({
 
                 vm.setProgressBar(data);
 
-                if(vm.appendLable!=''){
+                if(vm.appendLable!=null){
                     vm.appendContent = true;
                 }else{
                     vm.appendContent = false;

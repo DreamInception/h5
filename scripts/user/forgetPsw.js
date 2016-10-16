@@ -20,10 +20,14 @@ var index_vm = new Vue({
         },
 		checkImgCode : function () {
             var vm = this;
-			rest.get({
-        		url: vm.checkImgCodeUrl + '?imgKey=' + this.imgKey + '&text=' + this.imgCodeText
+			rest.post({
+        		url: vm.checkImgCodeUrl,
+        		data:{
+        			imgKey:this.imgKey,
+        			text:this.imgCodeText
+        		}
         	}, function(data){
-        		window.location.href = '/h5/html/user/setNewPsw.html?phone=' + vm.mobile;
+        		window.location.href = '/h5/html/user/setNewPsw.html?phone=' + vm.mobile+'&imgKey='+vm.imgKey+'&imgCodeText='+vm.imgCodeText;
         	});
         }
     },

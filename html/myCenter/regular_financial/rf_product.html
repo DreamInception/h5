@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/myCenter/regular_financial/rf_product.css">
+    <script type="text/javascript" src="scripts/common/jquery-2.0.3.min.js"></script>
+    <title>多肉理财</title>
+</head>
+	<body style="background-color: #f2f2f2">
+		<article class="rf_product_artical" id="rf_product_artical" v-cloak>
+				<header class="f-cb">
+		        <a href="javascript:history.go(-1)" class="f-fl">
+		            <img src="images/back.png" alt="" class="returnArrow">
+		        </a>
+		        <span>{{targetName}}</span>
+		    </header>
+			<section class="head_section">
+				<div class="head_left">
+					<div style="float:left"></div>
+					<!--<div class="li_backDiv"><p>N</p></div>-->
+					<img src="http://jyp.oss-cn-shanghai.aliyuncs.com/pic/58bedcdc-556e-443a-bacc-928f3afc58aa.png" alt="" class="li_icon">
+				</div>
+				<div class="head_font">
+					{{targetName}}
+				</div>
+			</section>
+			<section class="top_section">
+				<div v-if="ifMyPro" class="ts_headTitle">
+					预期收益（元）
+				</div>
+				<div v-else class="ts_headTitle">
+					到账收益（元）
+				</div>
+				<div class="ts_money">
+					{{respectIncome}}
+					<img src="images/zichan_jingtanhao.png" class="ts_alt" id="ts_alt" v-on:click="showDetailbenifit(1)">
+					<img src="images/zichuan_box.png" class="ts_zichan_border" id="ts_zichan_border" v-on:click="showDetailbenifit(2)">
+					<div class="ts_span" id="ts_span" v-if="ifMyPro">
+						<div>
+							预期基本收益：{{respectBaseIncome}}元
+						</div>
+						<div>
+							预期标的收益：{{respectBDIncome}}元
+						</div>
+						<div>
+							预期活动收益：{{respectActIncome}}元
+						</div>
+					</div>
+					<div class="ts_span" id="ts_span" v-else>
+						<div>
+							到账基本收益：{{respectBaseIncome}}元
+						</div>
+						<div>
+							到账标的收益：{{respectBDIncome}}元
+						</div>
+						<div>
+							到账活动收益：{{respectActIncome}}元
+						</div>
+					</div>
+				</div>
+				<div></div>
+				<aside class="ts_title">
+		            <div class="ts_div">
+		                <p class="ts_font1" v-if="ifMyPro">持有金额（元）</p>
+		                <p class="ts_font1" v-else>到账金额（元）</p>
+		                <p class="ts_font2_pre">{{currentAmount}}</p>
+		            </div>
+		            <div class="ts_line"></div>
+		            <div class="ts_div">
+		                <p class="ts_font1" v-if="ifMyPro">代收本息（元）</p>
+		                <p class="ts_font1" v-else>到账本息（元）</p>
+		                <p class="ts_font2_pre">{{respectAmount}}</p>
+		            </div>
+		        </aside>
+			</section>
+			<section class="middle_section">
+				<div class="middle_layer1">
+					<div style="float:left"></div>
+					<p class="middle_section_tr1 middle_section_font1">到期时间</p>
+					<p class="middle_section_tr2 middle_section_font1">剩余天数</p>
+					<div style="float:right"></div>
+				</div>
+				<div class="middle_layer2">
+					<div style="float:left"></div>
+					<p class="middle_section_tr1 middle_section_font2">{{repayDate}}</p>
+					<p class="middle_section_tr2 middle_section_font2" v-if="ifMyPro">{{remainDay}}天</p>
+					<p class="middle_section_tr2 middle_section_font2" v-else>已还款</p>
+					<div style="float:right"></div>
+				</div>
+			</section>
+			<section class="detail_section">
+				<div class="detail_section_layer">
+					<div class="layer_div">
+						<p class="layer_p1">投资时间</p>
+						<p class="layer_p2">{{buyDate}}</p>
+					</div>
+				</div>
+				<div class="detail_section_layer">
+					<div class="layer_div">
+						<p class="layer_p1" v-if="ifMyPro">预期年化收益</p>
+						<p class="layer_p1" v-else>年化收益</p>
+						<p class="layer_p2">{{respectInterest}}</p>
+					</div>
+				</div>
+				<div class="detail_section_layer" v-if="ifMyPro" v-on:click="pageToContact">
+					<div class="layer_div">
+						<p class="layer_p1">合同查看</p>
+						<img src="images/arrows_right.png" alt="" class="to_arrow">
+						<p class="layer_p2">《产品合同》</p>
+					</div>
+				</div>
+				<!--<div class="detail_section_layer" v-if="ifMyPro">
+					<div class="layer_div">
+						<p class="layer_p1">本息发放方式</p>
+						<p class="layer_p2">利息余额</p>
+					</div>
+				</div>-->
+			</section>
+			<section class="foot_section">
+				<div class="layer_last" v-on:click="pageToProduct">
+						<p class="layer_p1">查看产品详情</p>
+						<img src="images/arrows_right.png" alt="" class="to_arrow">
+				</div>
+			</section>
+		</article>
+	</body>
+	<script src="scripts/common/vue.min.js"></script>
+	<script src="scripts/common/vue-resource.min.js"></script>
+	<script src="scripts/common/custom-function.js"></script>
+	<script src="scripts/myCenter/regular_financial/rf_product.js"></script>
+	<script src="scripts/product/fixed_product/fixed_session_storage.js"></script>
+</html>

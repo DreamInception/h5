@@ -14,76 +14,137 @@
     <title>多肉理财</title>
 </head>
 <body>
-<section class="asset_index_container" id="asset_index_container" v-cloak>
+<article class="asset_index_container" id="asset_index_container" v-cloak>
     <header class="f-cb">
         <a href="html/activities/index.html" class="f-fl">
             <img src="images/back.png" alt="" class="returnArrow">
         </a>
         <span>资产</span>
+        <a href="html/myCenter/setup_center.html" class="f-fr">
+            <img src="images/assetToCenter.png" alt="" class="myCenter">
+        </a>
     </header>
-    <div class="account_Number">
-        <p class="asset_money_txt">
-            <span>总资产（元）</span>
-            <a href="javascript:;" class="switch" v-on:click="switch">
-                <img src="images/eyelash_assets.png" class="eyeClose" alt="" v-show="pswDisplay">
-                <img src="images/eye_assets.png" class="eyeOpen" style="display: none;" alt="" v-show="!pswDisplay">
-            </a>
-        </p>
-        <p class="asset_money_num" v-show="value">{{amount}}</p>
-        <p v-show="!value" class="asset_money_num" >******</p>
-        <p class="all_earning_txt">累计收益（元）</p>
-        <p class="all_earning_num" v-show="value">{{rate}}</p>
-        <p class="all_earning_num" v-show="!value">*****</p>
-    </div>
-        <ul class="detail_list">
-            <li class="f-cb dl_info">
-                <div class="f-fl dl_account" style="font-size: 1.5rem;">
-                    <p>账户余额</p>
-                    <p v-show="value">{{rateBalance}}</p>
-                    <p v-show="!value">****</p>
-                </div>
-                <div class="f-fr dl_btns">
-                    <a href="javascript:;">提现</a>
-                    <a href="html/myCenter/recharge.html">充值</a>
-                </div>
-            </li>
-            <li class="f-cb dl_current">
+        <div class="account_Number" v-on:click="jumpAsset">
+            <p class="asset_money_txt">
+                <span>总资产（元）</span>
+                <span class="switch" v-on:click="switch">
+                    <img src="images/eyelash_assets.png" class="eyeClose" alt="" v-show="pswDisplay">
+                    <img src="images/eye_assets.png" class="eyeOpen" style="display: none;" alt="" v-show="!pswDisplay">
+                </span>
+            </p>
+            <p class="asset_money_num" v-show="value">{{amount}}</p>
+            <p v-show="!value" class="asset_money_num">******</p>
+            <p class="all_earning_txt">累计收益（元）</p>
+            <p class="all_earning_num" v-show="value">+{{rate}}</p>
+            <p class="all_earning_num" v-show="!value">*****</p>
+        </div>
+
+    <ul class="detail_list">
+        <li class="f-cb dl_info">
+            <div class="f-fl dl_account" style="font-size: 1.5rem;">
+                <p>账户余额(元)</p>
+                <p v-show="value">{{rateBalance}}</p>
+                <p v-show="!value">****</p>
+            </div>
+            <div class="f-fr dl_btns">
+                <a href="javascript:;" @click="retrive">提现</a>
+                <a href="html/myCenter/recharge.html">充值</a>
+            </div>
+
+        </li>
+        <li class="f-cb dl_current">
+            <a href="html/myCenter/current_asset.html" class="f-cb">
                 <div class="f-fl">
-                    <img src="images/currentIcon.png" alt="">
+                    <img src="images/currentIcon.png" alt="" class="icon">
                     <span>活期宝</span>
                 </div>
                 <div class="f-fr">
                     <span v-show="value">{{hqBalance}}</span>
                     <span v-show="!value">****</span>
-                    <!--<img src="images/arrows_right.png" alt="">-->
+                    <img src="images/arrows_right.png" alt="" class="arrow">
                 </div>
-            </li>
-            <li class="f-cb dl_fixed">
-                <div class="f-fl ">
-                    <img src="images/fixedIcon.png" alt="">
+            </a>
+        </li>
+        <li class="f-cb dl_fixed">
+            <a href="html/myCenter/regular_financial/rf_index.html" class="f-cb">
+                <div class="f-fl">
+                    <img src="images/fixedIcon.png" alt="" class="icon">
                     <span>定期理财</span>
-                </div>
+                    </div>
                 <div class="f-fr">
                     <span v-show="value">{{dqBalance}}</span>
                     <span v-show="!value">****</span>
-                    <!--<img src="images/arrows_right.png" alt="">-->
+                    <img src="images/arrows_right.png" alt="" class="arrow">
                 </div>
-            </li>
-            <li class="f-cb dl_tyj">
+            </a>
+        </li>
+        <li class="f-cb dl_baina">
+            <a href="javascript:;" class="f-cb" @click="jumpBn">
                 <div class="f-fl">
-                    <img src="images/diamond.png" alt="">
+                    <img src="images/baina.png" alt="" class="icon">
+                    <span>多肉白拿</span>
+                </div>
+                <div class="f-fr">
+                    <span v-show="value">{{baina}}</span>
+                    <span v-show="!value">****</span>
+                    <img src="images/arrows_right.png" alt="" class="arrow">
+                </div>
+            </a>
+        </li>
+        <li class="f-cb dl_tyj">
+            <a href="html/myCenter/experienceMoney.html" class="f-cb">
+                <div class="f-fl">
+                    <img src="images/diamond.png" alt="" class="icon">
                     <span>体验金</span>
 
                 </div>
                 <div class="f-fr">
                     <span v-show="value">{{experienceMoneyAmount}}</span>
                     <span v-show="!value">****</span>
-                    <!--<img src="images/arrows_right.png" alt="">-->
+                    <img src="images/arrows_right.png" alt="" class="arrow">
                 </div>
-            </li>
-        </ul>
+            </a>
+        </li>
+        <li class="f-cb dl_tickets">
+            <a href="html/myCenter/voucher.html" class="f-cb">
+                <div class="f-fl">
+                    <img src="images/tickets.png" alt="" class="icon">
+                    <span>我的卡券</span>
 
-</section>
+                </div>
+                <div class="f-fr">
+                    <!--<span v-show="value">{{}}</span>-->
+                    <!--<span v-show="!value">****</span>-->
+                    <img src="images/arrows_right.png" alt="" class="arrow">
+                </div>
+            </a>
+        </li>
+        <li class="f-cb dl_record">
+            <a href="html/myCenter/business_record.html" class="f-cb">
+                <div class="f-fl">
+                    <img src="images/clock.png" alt="" class="icon">
+                    <span>交易记录</span>
+
+                </div>
+                <div class="f-fr">
+                    <img src="images/arrows_right.png" alt="" class="arrow">
+                </div>
+            </a>
+        </li>
+        <!--<li class="f-cb dl_asset">-->
+            <!--<a href="javascript:;" class="f-cb">-->
+                <!--<div class="f-fl">-->
+                    <!--<img src="images/mountain.png" alt="" class="icon">-->
+                    <!--<span>V1.0资产</span>-->
+
+                <!--</div>-->
+                <!--<div class="f-fr">-->
+                    <!--<img src="images/arrows_right.png" alt="" class="arrow">-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</li>-->
+    </ul>
+</article>
 <script src="scripts/common/vue.js"></script>
 <script src="scripts/common/vue-resource.min.js"></script>
 <script src="scripts/common/custom-function.js"></script>

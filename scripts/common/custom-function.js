@@ -334,3 +334,124 @@ function NumberFixed(num, fixedVal){
 	var newNum = num.toFixed(newFixedVal);
 	return newNum.substring(0, newNum.lastIndexOf('.') + newFixedVal);
 }
+
+/**
+ * 格式化日期字符串/日期对象
+ * @param datetime
+ * @param pattern
+ * @returns {String}
+ */
+
+function formatDate(datetime, pattern){
+    var _d = new Date();
+    if(typeof datetime == 'object'){
+        _d = datetime;
+    }else if(typeof datetime == 'string'){
+        _d = parseDate(datetime);
+    }
+    
+    var y = _d.getFullYear();
+    var M = _d.getMonth() + 1;
+    var d = _d.getDate();
+    var h = _d.getHours();
+    var m = _d.getMinutes();
+    var s = _d.getSeconds();
+    
+    var yyyy = y;
+    var MM = (M < 10 ? ('0' + M) : M);
+    var dd = (d < 10 ? ('0' + d) : d);
+    var HH = (h < 10 ? ('0' + h) : h);
+    var mm = (m < 10 ? ('0' + m) : m);
+    var ss = (s < 10 ? ('0' + s) : s);
+    
+    var fmt = new String(pattern).replace(/yyyy/gi, yyyy).replace(/MM/g, MM).replace(/dd/gi, dd).replace(/HH/gi, HH).replace(/mm/g, mm).replace(/ss/gi, ss);
+    fmt = fmt.replace(/y/gi, y).replace(/M/g, M).replace(/d/gi, d).replace(/h/gi, h).replace(/m/g, m).replace(/s/gi, s);
+    
+    return fmt;
+}
+
+/**
+ * 转化日期字符串
+ */
+function parseDate(dateStr){
+    if(dateStr=='')
+        return null;
+    var _dateStr = new String(dateStr).replace(/\-/g, '/').replace(/\.\d+$/, '');
+    var date = new Date(_dateStr);
+    if(date.toString() !== 'Invalid Date'){
+        return date;
+    }
+    return null;
+}
+
+function scrollInit(callback) {
+    var pullUpEl = document.getElementById('pullUp'),
+	    pullUpOffset = pullUpEl.offsetHeight;
+    myScroll = new iScroll('wrapper', {
+        scrollbarClass: 'myScrollbar', 
+        useTransition: false, 
+        onRefresh: function () {
+            if (pullUpEl.className.match('loading')) {
+                pullUpEl.className = '';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+            }
+        },
+        onScrollMove: function () {
+            if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+                pullUpEl.className = 'flip';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '释放刷新...';
+                this.maxScrollY = this.maxScrollY;
+            } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+                pullUpEl.className = '';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+                this.maxScrollY = pullUpOffset;
+            }
+        },
+        onScrollEnd: function () {
+            if (pullUpEl.className.match('flip')) {
+                pullUpEl.className = 'loading';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载中...'; 
+                if($('#pullUp').css("display") == "block"){
+                	callback();
+                }               
+            }
+        }
+
+    });
+}
+
+
+var enycryptPhoneNum = function(phone){
+	/*var phoneNum = phone.toString();
+	var startIndex = 3;
+	var endIndex = 7;
+	var newPhone = phoneNum.replace(phoneNum.substring(startIndex,endIndex),'****');*/
+	if(!phone){
+		return phone;
+	}
+	var mobileArray = phone.split('');
+	mobileArray.splice(3, 4, '****');
+	var newPhone  =mobileArray.join('');
+	
+	return newPhone;
+}
+
+
+
+function getDeviceinfo() {
+	var u = navigator.userAgent,
+		app = navigator.appVersion;
+	var result = {};
+	result.trident = u.indexOf('Trident') > -1, //IE内核
+		result.presto = u.indexOf('Presto') > -1, //opera内核
+		result.gecko = u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+		result.mobile = !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+		result.ios = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+		result.android = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,//安卓终端
+		result.iPhone = u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+		result.iPad = u.indexOf('iPad') > -1, //是否iPad
+		result.webApp = u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+	result.language = (navigator.browserLanguage || navigator.language).toLowerCase();
+
+	return result;
+}

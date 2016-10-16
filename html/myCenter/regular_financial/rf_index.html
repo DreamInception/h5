@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="format-detection" content="telephone=no">
+    <base href="/h5/">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/myCenter/regular_financial/rf_index.css">
+    <script type="text/javascript" src="scripts/common/jquery-2.0.3.min.js"></script>
+    <title>多肉理财</title>
+</head>
+	<body style="background-color: #f2f2f2">
+		<article class="rf_index_artical greyBg" id="rf_index_artical" v-cloak>
+		<!--<div class="contentList" id="wrapper">
+		<div class="scroller">-->
+			<header class="f-cb">
+		        <a href="javascript:history.go(-1)" class="f-fl">
+		            <img src="images/back.png" alt="" class="returnArrow">
+		        </a>
+		        <span>定期理财</span>
+		        <!--<span>{{test}}</span>-->
+		    </header>
+			<section class="top_section">
+				<aside class="ts_title">
+		            <div class="f-fl">
+		                <p class="ts_font1">持有资产总额（元）</p>
+		                <p class="ts_font2_pre">{{totalAmout_pre}}.</p>
+		                <p class="ts_font2_end">{{totalAmout_end}}</p>
+		            </div>
+		            <div class="ts_line"></div>
+		            <div class="f-fr">
+		                <p class="ts_font1">预期总收益（元）</p>
+		               <p class="ts_font2_pre">{{totalInterset_pre}}.</p>
+		                <!--<p class="ts_font2_pre">200.</p>-->
+		                <p class="ts_font2_end">{{totalInterset_end}}</p>
+		            </div>
+		        </aside>
+			</section>
+			<section class="tab_section">
+				<div class="tab_div_selected" v-if="tab_showTab1" >
+					<p class="tab_title tab_title_left tab_title_selected">持有资产</p>
+				</div>
+				<div class="tab_div_unselect" v-else  v-on:click="changeTab">
+					<p class="tab_title tab_title_left tab_title_unselect">持有资产</p>
+				</div>
+				<div class="tab_div_selected" v-if="!tab_showTab1" >
+					<p class="tab_title tab_title_right tab_title_selected">历史资产</p>
+				</div>
+				<div class="tab_div_unselect" v-else  v-on:click="changeTab"> 
+					<p class="tab_title tab_title_right tab_title_unselect">历史资产</p>
+				</div>
+			</section>
+			<section v-if="tab_showTab1" class="tab_content" id="tab_content1">
+				<ul class="rf_product_ul" v-for="proc in myProducts">
+					<li v-on:click="showMyProcDetail($index)" >
+			            <div class="li_top">
+			            	<div style="float:left"></div>
+			            	<!--<div class="li_backDiv"><p>D</p></div>-->
+			            	<img src="http://jyp.oss-cn-shanghai.aliyuncs.com/pic/58bedcdc-556e-443a-bacc-928f3afc58aa.png" alt="" class="li_icon">
+			            	<div class="li_nameDiv">{{proc.name}}</div>
+			            	<div class="li_raiseDiv" v-if="proc.ifRaise"><p>加息券</p></div>
+			            	<div class="li_dayDiv">剩余{{proc.remainDay}}天</div>
+			            	<div style="float:right"></div>
+			            </div>
+			            <div class="li_middle">
+			            	<div style="float:left"></div>
+			            	<p class="li_money1 li_fsize1">{{proc.currentAmount}}</p>
+			            	<p class="li_money2 li_fsize1">{{proc.respectIncome}}</p>
+			            	<p class="li_date li_fsize1">{{proc.buyDate}}</p>
+			            	<div style="float:right"></div>
+			            </div>
+			            <div class="li_bottom">
+			            	<div style="float:left"></div>
+			            	<p class="li_money1 li_fsize2">持有资产（元）</p>
+			            	<p class="li_money2 li_fsize2">预期收益（元）</p>
+			            	<p class="li_date li_fsize2">投资日期</p>
+			            	<div style="float:right"></div>
+			            </div>
+			        </li>
+				</ul>
+			</section>
+			<section v-else class="tab_content" id="tab_content2">
+				<ul class="rf_product_ul" v-for="proc in hisProducts">
+					<li v-on:click="showHisProcDetail(proc)">
+			            <div class="li_top">
+			            	<div style="float:left"></div>
+			            	<div class="li_backDiv"><p>D</p></div>
+			            	<div class="li_nameDiv">{{proc.name}}</div>
+			            	<div class="li_dayDiv">已完成</div>
+			            	<div style="float:right"></div>
+			            </div>
+			            <div class="li_middle">
+			            	<div style="float:left"></div>
+			            	<p class="li_money1 li_fsize1">{{proc.currentAmount}}</p>
+			            	<p class="li_money2 li_fsize1">{{proc.respectIncome}}</p>
+			            	<p class="li_date li_fsize1 >{{proc.buyDate}}</p>
+			            	<div style="float:right"></div>
+			            </div>
+			            <div class="li_bottom">
+			            	<div style="float:left"></div>
+			            	<p class="li_money1 li_fsize2">到账本金（元）</p>
+			            	<p class="li_money2 li_fsize2">到账收益（元）</p>
+			            	<p class="li_date li_fsize2">投资日期</p>
+			            	<div style="float:right"></div>
+			            </div>
+			        </li>
+				</ul>
+			</section>
+			<!--<div id="pullUp">
+                <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+            </div>-->
+		<!--</div>
+		</div>-->
+		</article>
+	</body>
+	<script src="scripts/common/vue.min.js"></script>
+	<script src="scripts/common/vue-resource.min.js"></script>
+	<script src="scripts/common/custom-function.js"></script>
+	<script src="scripts/common/iscroll.js"></script>
+	<script src="scripts/myCenter/regular_financial/rf_index.js"></script>
+	<script type="text/javascript">
+</script>
+</html>
