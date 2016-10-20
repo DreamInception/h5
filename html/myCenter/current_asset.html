@@ -29,12 +29,12 @@
                     <p class="value">{{accountNum}}</p>
                 </div>
                 <aside class="asset_benefit f-cb">
-                    <div class="f-fl">
+                    <div class="f-fl" style="width: 40%">
                         <p class="name">昨日收益（元）</p>
                         <p class="value">{{yestNum}}</p>
                     </div>
                     <div class="f-fl line"></div>
-                    <div class="f-fr">
+                    <div class="f-fl" style="width: 40%">
                         <p class="name">累计收益（元）</p>
                         <p class="value">{{sumNum}}</p>
                     </div>
@@ -49,7 +49,8 @@
                     </div>
                     <div class="f-cb number">
                         <p class="f-fl">{{item.currentAmount}}</p>
-                        <p class="f-fr">{{item.yearRate}}</p>
+                        <p class="f-fr">{{item.yearRate}}
+                            <span v-if="item.appendRate!=0">+{{item.appendRate}}</span></p>
                     </div>
                     <div class="f-cb info">
                         <p class="f-fl">持有资产（元）</p>
@@ -70,5 +71,6 @@
 <script src="scripts/common/iscroll.js"></script>
 <script src="scripts/common/custom-function.js"></script>
 <script src="scripts/myCenter/current_asset.js"></script>
+<script src="scripts/common/baiduScript.js"></script>
 </body>
 </html>

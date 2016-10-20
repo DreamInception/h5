@@ -102,6 +102,10 @@ var index_vm = new Vue({
             	return false;
 
             }
+		},
+		showContract: function () {
+			$(".user-common-container").hide();
+			$(".platform_article").show();
 		}
     },
     ready: function () {
@@ -135,3 +139,7 @@ index_vm.$watch('smsText', function (val) {
 	}
 	checkInput.combinedCheck(this.pswdFlag,this.msgFlag ,this.phoneFlag,this.imgFlag,'regBtn');
 });
+function toReg() {
+	$(".user-common-container").show();
+	$(".platform_article").hide();
+}

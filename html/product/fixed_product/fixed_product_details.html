@@ -18,7 +18,7 @@
 	<body>
 		<article class="fixed_productDtls_container greyBg" id="fixed_productDtls_container" v-cloak>
 			<header class="f-cb">
-				<a href="javascript:history.go(-1)" class="f-fl">
+				<a href="html/activities/index.html" class="f-fl">
 					<img src="images/back.png" alt="" class="returnArrow">
 				</a>
 				<span>{{ productData.targetName }}</span>
@@ -29,8 +29,8 @@
 						<p class="f-fl">预期年化收益率</p>
 						<em class="f-fr day-txt-bg">期限{{targetDay}}天</em>
 					</div>
-					<p>{{ productData.yearRateStr }}<span v-if="productData.regularTargetAppendRate">+ {{productData.regularTargetAppendRate.appendYearRate}}</span>
-						<em class="targetActivityBg" v-show="productData.regularTargetAppendRate.appendLable">{{productData.regularTargetAppendRate.appendLable}}</em>
+					<p>{{ productData.yearRateStr }}<span v-if="productData.regularTargetAppendRate">+ {{productData.regularTargetAppendRate.appendYearRate}}</span><span>%</span>
+						<em class="targetActivityBg" v-if="productData.regularTargetAppendRate">{{productData.regularTargetAppendRate.appendLable}}</em>
 					</p>
 				</div>
 				<ul class="progressBlock" v-show="barStatus">
@@ -89,18 +89,23 @@
 					</a>
 				</div>
 			</section>
-			<img src="images/pdt_risk.png" alt="" class="pdt_risk">
-			<div class="f-cb">
-				<a href="html/product/fixed_product/calculator.html" class="calculateBtn f-fl">
-					<img src="images/calculater.png" alt="">
-				</a>
-				<a href="html/product/fixed_product/fixed_invest_money.html" class="investBtn f-fl">立即投资</a>
-			</div>
+			<div style="background-color: #f2f2f2;height: 12.6rem;"></div>
+			<aside style="position: absolute;width: 100%;bottom: 0">
+				<img src="images/pdt_risk.png" alt="" class="pdt_risk">
+				<div class="f-cb">
+					<a href="html/product/fixed_product/calculator.html" class="calculateBtn f-fl">
+						<img src="images/calculater.png" alt="">
+					</a>
+					<a href="html/product/fixed_product/fixed_invest_money.html" class="investBtn f-fl">立即投资</a>
+				</div>
+
+			</aside>
 		</article>
 		<script src="scripts/common/vue.js"></script>
 		<script src="scripts/common/vue-resource.min.js"></script>
 		<script src="scripts/common/custom-function.js"></script>
 		<script src="scripts/product/fixed_product/fixed_session_storage.js"></script>
 		<script src="scripts/product/fixed_product/fixed_product_details.js"></script>
+		<script src="scripts/common/baiduScript.js"></script>
 	</body>
 </html>

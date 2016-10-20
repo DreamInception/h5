@@ -30,19 +30,21 @@ var index_vm = new Vue({
             	url : vm.apiUrl+userId+'/'+vm.dquserId+'/invest-detail'
             }, function(data){
             		vm.targetName = data.targetName;
-            		vm.respectIncome = vm.setAmount(data.preAmount);
+            		vm.respectBaseIncome = vm.setAmount(data.baseInterestAmount);
+            		vm.respectBDIncome = vm.setAmount(data.bdInterestAmount);
+            		vm.respectActIncome = vm.setAmount(data.kjInterestAmount);
+            		vm.respectIncome = NumberFixed((vm.respectBaseIncome-0)+(vm.respectBDIncome-0)+(vm.respectActIncome-0), 2);
             		vm.currentAmount = vm.setAmount(data.currentAmount);
-            		vm.respectAmount = vm.handleData('respectAmount',data);
+            		vm.respectAmount =  NumberFixed((vm.currentAmount-0)+(vm.respectIncome-0),2);
             		vm.repayDate = data.repayDate;
             		vm.remainDay = data.remainDays;
             		vm.buyDate = vm.handleData('buyDate',data.buyTime);
             		vm.respectInterest = vm.setRate(data.yearRate);
-            		vm.respectBaseIncome = vm.setAmount(data.baseInterestAmount);
-            		//vm.respectBaseIncome = vm.setAmount(100101.01);
-            		vm.respectBDIncome = vm.setAmount(data.bdInterestAmount);
-            		vm.respectActIncome = vm.setAmount(data.kjInterestAmount);
+            		
             		vm.targetIcon = data.targetIcon;
             		vm.targetId = data.targetId;
+            		
+            		
 				 
             }, function(data){
             	//alert(data);
@@ -87,7 +89,7 @@ var index_vm = new Vue({
         		return dateformat;
         	}
         },
-        setAmount(amount){
+        setAmount: function(amount){
         	 var result = [];
         	amount+='';
         	var amounts = amount.split(".");
@@ -111,7 +113,7 @@ var index_vm = new Vue({
         	return result[0]+'.'+result[1];
         	//return amount.toFixed(2);
         },
-        setRate(amount){
+        setRate: function(amount){
 		    return  (amount*100).toFixed(2)+'%';
         }
         

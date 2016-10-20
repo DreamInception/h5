@@ -13,6 +13,7 @@ var vm = new Vue({
             }else{
                 this.selectId = couponId;
                 this.selectValue = value;
+                $("input[type='checkbox']").removeAttr("checked");
             }
         },
         

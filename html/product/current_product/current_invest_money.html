@@ -17,7 +17,7 @@
 <body style="background: #f2f2f2;">
 <article class="buy-currPro-container  greyBg" id="buy-currPro-container" v-cloak>
     <header class="f-cb">
-        <a href="javascript:history.go(-1)" class="f-fl">
+        <a href="html/product/current_product/current_productDetails.html" class="f-fl">
             <img src="images/back.png" alt="" class="returnArrow">
         </a>
         <span>确认投资</span>
@@ -46,7 +46,7 @@
             <!--<span>我阅读并同意<a href="http://www.51vest.com/pdt_contract_hq.html">《产品合同》</a></span>-->
             <span>我已阅读并同意<a href="html/contract/pdt_contract_hq.html">《产品合同》</a></span>
         </div>
-        <button class="purchaseBtn" id="purchaseBtn"  @click="buyForward" v-show="btnDisplay">立即投资</button>
+        <button class="purchaseBtn" id="purchaseBtn"  @click="buyForward" v-show="btnDisplay" disabled>立即投资</button>
         <button class="rechargeBtn" v-show="!btnDisplay" @click="toRecharge">余额不足，我要充值</button>
         <!--<button class="purchaseBtn" id="purchaseBtn4" style="background:red;display:none">投资金额需为100的整数倍</button>-->
         <!--<button class="purchaseBtn" id="purchaseBtn3" style="background:silver;color:grey;display:none">立即投资</button>-->
@@ -58,6 +58,7 @@
 <script src="scripts/common/vue-resource.min.js"></script>
 <script src="scripts/common/custom-function.js"></script>
 <script src="scripts/product/current_product/current_invest_money.js"></script>
+<script src="../scripts/common/baiduScript.js"></script>
 
 </body>
 </html>

@@ -75,7 +75,7 @@ var index_vm = new Vue({
             		}
             		var v = dqUsers[i]; 
             		temp.name = v.targetName;
-            		temp.remainDay = v.remainDays;
+            		temp.remainDay = vm.handleData('remainDays',v.remainDays);
             		temp.ifRaise = vm.handleData('ifRaise',v);
             		temp.currentAmount = v.currentAmount;
             		temp.respectIncome = vm.handleData('respectIncome',v);
@@ -145,16 +145,25 @@ var index_vm = new Vue({
         		else return false;
         	}
         	else if(type == 'respectIncome'){
-        		return v.baseInterestAmount+v.bdInterestAmount+v.kjInterestAmount;
+        		var m = v.baseInterestAmount+v.bdInterestAmount+v.kjInterestAmount;
+        		return NumberFixed(m, 2);
         	}
         	else if(type == 'respectAmount'){
         		return v.currentAmount+v.respectIncome;
         	}
         	else if(type == 'buyDate'||type == 'repayDate'){
         		//处理时间
-        		date=new Date(parseInt(v)+86400000);
+        		date=new Date(parseInt(v));
                 var dateformat=date.format('yyyy-MM-dd');
         		return dateformat;
+        	}
+        	else if(type == 'remainDays'){
+        		if(v == 0){
+        			return '到期处理中';
+        		}
+        		else{
+        			return '剩余'+v+'天';
+        		}
         	}
         },
         setAmount: function (amount,inserest){

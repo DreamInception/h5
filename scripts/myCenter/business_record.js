@@ -1,7 +1,7 @@
 /**
  * Created by GuoXiang on 2016/10/12.
  */
-var pageNumber = 1, type = 1;
+var pageNumber = 1, type = 0;
 var busRecord_vm = new Vue({
     el: '#business_record_container',
     data: {

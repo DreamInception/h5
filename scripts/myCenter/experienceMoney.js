@@ -2,7 +2,7 @@
  * Created by ChangFeng on 2016/10/12.
  */
 var page = 1, rows = 10;
-var myScroll;
+var myScroll = null;
 
 $(function(){
     if ($('.scroller').height() < window.screen.height) {

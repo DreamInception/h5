@@ -40,12 +40,20 @@ var vm = new Vue({
                 var vm = this;
                 var b = (!(parseInt(val) % 100 == 0))|| !(/(^[1-9]\d*$)/.test(val));
                 if (b) {
+                    if(val==null){
+                        $("#purchaseBtn1").hide();
+                        $("#purchaseBtn2").hide();
+                        $("#purchaseBtn4").hide();
+                        this.btnDisplay = true;
+                        $("#purchaseBtn").css("background", "#c3b38a").css("color","#fff").attr("disabled",true);
+                        return;
+                    }
                     $("#purchaseBtn1").hide();
                     $("#purchaseBtn2").hide();
                     $("#purchaseBtn4").show();
                     this.btnDisplay = true;
                     $("#purchaseBtn").css("background", "#c3b38a").css("color","#fff").attr("disabled",true);
-                } else {
+                }else {
                     if (parseInt(val) > parseInt(vm.targetFreeAmount)) {
                         $("#purchaseBtn2").hide();
                         $("#purchaseBtn4").hide();
@@ -78,6 +86,7 @@ var vm = new Vue({
 	        // console.log('need user id ');
 	        return;
 	    }
+        this.amountCheck(this.hqmoney);
 	    rest.get({
 	        url: this.userApiUrl
 	    }, function (data) {

@@ -58,6 +58,8 @@
             this.firstPoster.find(".curr-text").css({
                 "paddingTop": this.options.posterHeight * 0.07
             });
+            this.firstPoster.show();
+
         },
         setOtherPosterItems: function () {
             var that = this;
@@ -81,7 +83,7 @@
                     "zIndex": leftIndex--,
                     "left": sideBlank - i * gap,
                     "top": (that.options.containerHeight - that.options.posterHeight * that.options.scale) / 2,
-                });
+                }).show();
                 i++;
             });
             var j = level;
@@ -94,7 +96,7 @@
                     "zIndex": rightIndex++,
                     "left": that.options.containerWidth - (sideBlank - j * gap + rightWidth),
                     "top": (that.options.containerHeight - that.options.posterHeight * that.options.scale) / 2,
-                });
+                }).show();
                 j--;
             });
 

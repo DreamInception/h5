@@ -17,6 +17,7 @@ var vm = new Vue({
 
 		day: fixedProductSessionStorageUtils.getSelectedRegularTarget().day,
 		targetId: fixedProductSessionStorageUtils.getSelectedRegularTarget().targetId,
+		targetState: fixedProductSessionStorageUtils.getSelectedRegularTarget().targetState,
 		minAmount: fixedProductSessionStorageUtils.getSelectedRegularTarget().minAmount,
 		unitAmount: fixedProductSessionStorageUtils.getSelectedRegularTarget().unitAmount,
 		dayRate: fixedProductSessionStorageUtils.getSelectedRegularTarget().dayRate,
@@ -28,7 +29,8 @@ var vm = new Vue({
 		money_num: null,
 		rechargeNum:0,
 		tyjUrl: '',
-		rateUrl: ''
+		rateUrl: '',
+		returnUrl: null
 	},
 	methods: {
 		buyForward: function() {
@@ -111,10 +113,16 @@ var vm = new Vue({
 					}
 					
 					vm.$set('allMoneyCoupons', allowMoneyCoupons);
-					fixedProductSessionStorageUtils.setAllowMoneyCoupons(allowMoneyCoupons);
 
+					var buyAmount = fixedProductSessionStorageUtils.getBuyAmount();
+					if(buyAmount==null){
+						var moneyCoupons = amountFilter(0, allowMoneyCoupons);
+					}else{
+						var moneyCoupons = amountFilter(buyAmount, allowMoneyCoupons);
+					}
 
-					var moneyCoupons = amountFilter(0, allowMoneyCoupons);
+					fixedProductSessionStorageUtils.setAllowMoneyCoupons(moneyCoupons);
+
 					vm.$set('moneyCoupons', moneyCoupons);
 					
 					if(!vm.selectMoneyCouponValue){
@@ -156,8 +164,14 @@ var vm = new Vue({
 					
 					
 					vm.$set('allRateCoupons', allowRateCoupons);
-					
-					var rateCoupons = amountFilter(0, allowRateCoupons);
+					var buyAmount = fixedProductSessionStorageUtils.getBuyAmount();
+					if(buyAmount==null){
+						var rateCoupons = amountFilter(0, allowRateCoupons);
+					}else{
+						var rateCoupons = amountFilter(buyAmount, allowRateCoupons);
+					}
+					fixedProductSessionStorageUtils.setAllowRateCoupons(rateCoupons);
+
 					vm.$set('rateCoupons', rateCoupons);
 					
 					if(!vm.selectRateCouponYearRate){
@@ -173,7 +187,7 @@ var vm = new Vue({
 					}
 					
 					
-					fixedProductSessionStorageUtils.setAllowRateCoupons(allowRateCoupons);
+
 				},
 				error:function(errorRtnData){
 					alert(errorRtnData);
@@ -222,6 +236,14 @@ var vm = new Vue({
 			var vm = this;
 			var b = (!(parseInt(val) % 100 == 0))|| !(/(^[1-9]\d*$)/.test(val));
 			if (b) {
+				if(val==null){
+					$("#purchaseBtn1").hide();
+					$("#purchaseBtn2").hide();
+					$("#purchaseBtn4").hide();
+					this.btnDisplay = true;
+					$("#purchaseBtn").css("background", "#c3b38a").css("color","#fff").attr("disabled",true);
+					return;
+				}
 				$("#purchaseBtn1").hide();
 				$("#purchaseBtn2").hide();
 				$("#purchaseBtn4").show();
@@ -256,10 +278,14 @@ var vm = new Vue({
 		if(!userSession.checkId() || !userSession.checkRealName()){
     		return;
     	}
+		var amount = fixedProductSessionStorageUtils.getBuyAmount() || this.money_num;
+		this.amountCheck(amount);
 		this.getUserAccount();
 		this.getMoneyCoupon();
 		this.getRateCoupon();
 		this.setBuyAmount();
+		
+		this.returnUrl = "html/product/fixed_product/fixed_product_details.html?targetId="+this.targetId+"&targetState="+storage.get("targetState");
 	}
 });
 

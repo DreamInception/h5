@@ -1588,6 +1588,8 @@
             if (allowTouchCallbacks) {
                 s.emit('onTouchEnd', s, e);
             }
+            // 解决iscroll冲突
+            myScroll._end(e);
             allowTouchCallbacks = false;
             if (!isTouched) return;
             //Return Grab Cursor

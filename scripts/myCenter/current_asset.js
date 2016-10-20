@@ -27,9 +27,7 @@ var currentBao_vm = new Vue({
             var vm = this;
             if (storage.get("userId")) {
                 vm.userId = storage.get("userId");
-                vm.userId = '2016090513122648303';
             }
-            vm.userId = '2016090513122648303';
             rest.get({
                 url: '/api/user-asset-info/' + vm.userId + '/hquser',
                 params: {
@@ -44,6 +42,7 @@ var currentBao_vm = new Vue({
                     var nextAppendDate = data.hqList[i].nextAppendDate;
                     data.hqList[i].currentAmount = NumberFixed(data.hqList[i].currentAmount, 2);
                     data.hqList[i].yearRate = NumberFixed(data.hqList[i].yearRate * 100, 1);
+                    data.hqList[i].appendRate = NumberFixed(data.hqList[i].appendRate * 100, 1);
                     data.hqList[i].leftDays = Math.floor((new Date(nextAppendDate) - new Date()) / (1000 * 86400));
                     if(myScroll){
                         setTimeout(function () {

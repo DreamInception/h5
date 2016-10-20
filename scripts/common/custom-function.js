@@ -455,3 +455,18 @@ function getDeviceinfo() {
 
 	return result;
 }
+
+/*--------------------截取两位小数，不四舍五入----------------------*/
+function cutFloat(value){
+/*	var split1 = value.split(".");
+	if(split1.length == 1){
+		return value+'.00';
+	}
+	else if(split1.length == 2){
+		return value+'';
+	}
+	else if(split1.length > 2){
+		var point = split1.substring(0,1)
+	}*/
+	NumberFixed(currentAmount, 2);
+}

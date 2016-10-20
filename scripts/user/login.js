@@ -55,6 +55,13 @@ var vm=new Vue({
     ready: function () {
     	var vm = this;
 		document.getElementById("checkbox-10-1").checked = true;
+		var wechat = storage.get('wechatToken');
+		if(!wechat){
+			$("#checkbox_open").css("display","none");
+		}
+		else{
+			$("#checkbox_open").css("display","block");
+		}
     	//var defaultUrl = '/h5/html/myCenter/recharge.html';
 		var defaultUrl = '/h5/html/activities/index.html';
     	vm.fromUrl = getFromUrl() || defaultUrl;

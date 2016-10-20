@@ -17,7 +17,7 @@
 <body>
 <article class="current_productDtls_container greyBg" id="current_productDtls_container" v-cloak>
     <header class="f-cb">
-        <a href="javascript:history.go(-1)" class="f-fl">
+        <a href="html/activities/index.html" class="f-fl">
             <img src="images/back.png" alt="" class="returnArrow">
         </a>
         <span>{{targetName}}</span>
@@ -25,7 +25,10 @@
     <section class="benefitInfo">
         <div>
             <p>预期年化收益率</p>
-            <p>{{targetYearRate}}<span v-show="appendContent">+{{appendYearDate}}%</span><em class="targetActivityBg"  v-show="appendContent">{{appendLable}}</em></p>
+            <p>{{targetYearRate}}<span v-if="appendContent">+{{appendYearDate}}</span><span class="per">%</span>
+
+                <em class="targetActivityBg" v-show="appendContent">{{appendLable}}</em>
+            </p>
 
         </div>
         <ul class="f-cb addBlock">
@@ -51,7 +54,8 @@
     </section>
     <section class="product_introduction">
         <div class="f-cb firstLine">
-            <a href="html/product/current_product/current_product_information.html?targetName={{targetName}}&targetAmount={{targetAmount}}&targetYearRate={{targetYearRate}}" class="f-fl">
+            <a href="html/product/current_product/current_product_information.html?targetName={{targetName}}&targetAmount={{targetAmount}}&targetYearRate={{targetYearRate}}"
+               class="f-fl">
                 <img src="images/pdt_detail.png" alt="" class="pi_icon">
                 <span style="margin-left: 2rem;">产品详情</span>
             </a>
@@ -73,12 +77,17 @@
             </a>
         </div>
     </section>
-    <img src="images/pdt_risk.png" alt="" class="pdt_risk">
-    <a href="html/product/current_product/current_invest_money.html?dayRate={{targetDayRate}}&targetFreeAmount={{targetFreeAmount}}" class="purchaseBtn">立即投资</a>
+    <div style="background-color: #f2f2f2;height: 12.6rem;"></div>
+    <aside style="position: absolute;width: 100%;bottom: 0">
+        <img src="images/pdt_risk.png" alt="" class="pdt_risk">
+        <a href="html/product/current_product/current_invest_money.html?dayRate={{targetDayRate}}&targetFreeAmount={{targetFreeAmount}}"
+           class="purchaseBtn">立即投资</a>
+    </aside>
 </article>
 <script src="scripts/common/vue.js"></script>
 <script src="scripts/common/vue-resource.min.js"></script>
 <script src="scripts/common/custom-function.js"></script>
 <script src="scripts/product/current_product/current_productDetails.js"></script>
+<script src="scripts/common/baiduScript.js"></script>
 </body>
 </html>

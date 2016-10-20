@@ -35,10 +35,6 @@ var totalAsset_vm = new Vue({
             });
          
         },
-        logout: function () {
-            sessionStorage.clear();
-            window.location.href = "/h5/html/activities/index.html";
-        },
         changeUrl: function () {
             var vm = this;
             if(!vm.isBind){
@@ -53,4 +49,8 @@ var totalAsset_vm = new Vue({
         this.ajaxData();
 
     }
-})
+});
+function logout() {
+    sessionStorage.clear();
+    window.location.href = "/h5/html/activities/index.html";
+}

@@ -1,4 +1,4 @@
-var vm=new Vue({
+var recharge_vm=new Vue({
     el: '#recharge-money-container',
     data:{
 		bankInfoUrl: '/api/user/' + storage.get('userId') + '/bankcard?userId=' + storage.get('userId'),
@@ -114,11 +114,12 @@ var vm=new Vue({
 		}
     	var defaultUrl = 'html/myCenter/asset_index.html';
     	this.fromUrl = getFromUrl() || defaultUrl;
-		if(this.money!=null && parseInt(this.money)>=100){
-			$("#rechargeBtn").removeAttr("disabled");
-		}
+		// if(this.money!=null && parseInt(this.money)>=100){
+		// 	$("#rechargeBtn").removeAttr("disabled");
+		// }
+		checkInput.validateAmountNum(this.money,'rechargeBtn');
     }
 });
-vm.$watch('money', function (val) {
+recharge_vm.$watch('money', function (val) {
 	checkInput.validateAmountNum(val,'rechargeBtn');
 });

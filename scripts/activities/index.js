@@ -1,15 +1,6 @@
 var myScroll = null;
 window.onload = function () {
-	var mySwiper = new Swiper('.swiper-container', {
-		// Optional parameters
-		loop: true,
-		pagination: '.swiper-pagination',
-		paginationClickable: true,
-		// autoHeight: true,
-		// autoplay: true,
-		slidesPerSlide: 1,
-		speed: 1000
-	});
+
 	// var resize = function(e) {
 	// 	var query = $('.swiper-container');
 	// 	var clientW = query[0].clientWidth;
@@ -17,9 +8,6 @@ window.onload = function () {
 	// }
 	// $(window).bind('resize', resize);
 	// resize();
-	setInterval(function(){
-		mySwiper.slideNext();
-	}, 4000);
 
 	$(".posterList").mobileRotate({
 		containerWidth: $(this).width()*0.8,
@@ -50,7 +38,10 @@ var index_vm = new Vue({
 		isLogin: false,
 		fixedList: {},
 		mockList: [{'yRate':0.00,'day':0,'unitAmount':100,'targetName':'doro第一期','targetState':400,'targetId': 'doro01','regularTargetAppendRate':{'addRateStr':'0.2'}},{'yRate':1.00,'day':10,'unitAmount':100,'targetName':'doro第二期','targetState':400,'targetId': 'doro01'}],
-		currentPage: 1
+		currentPage: 1,
+		returnData: [],
+		version: 2,
+		bannerList: []
 	},
 	methods: {
 		getAjaxData: function() {
@@ -78,92 +69,108 @@ var index_vm = new Vue({
 						
 						data.regularTargets[x].onsaleTime = new Date(data.regularTargets[x].onsaleTime).format("hh:mm");
 						//data.regularTargets[x].days = (new Date(endDate) - new Date(beginDate))/((24*60*60*1000)) + 1;
-						data.regularTargets[x].yearRateStr = NumberFixed(new Number(data.regularTargets[x].yearRate * 100), 2) + '%';
+						data.regularTargets[x].yearRateStr = NumberFixed(new Number(data.regularTargets[x].yearRate * 100), 2);
 						if(data.regularTargets[x].regularTargetAppendRate){
 							data.regularTargets[x].addRateStr = NumberFixed(new Number(data.regularTargets[x].regularTargetAppendRate.appendYearRate * 100), 2) + '%';
 						}
 						data.regularTargets[x].dayRateStr = data.regularTargets[x].dayRate * 100 + '%';
 					}
-					vm.$set('listData', data.regularTargets);
-					vm.displayFixedPro = [];
-					vm.bindRealData(data);
-					
-						if(data.regularTargets[0].regularTargetAppendRate){
-							$("#list .list_day").html( NumberFixed(new Number(data.regularTargets[0].regularTargetAppendRate.appendYearRate * 100), 2) + '%');
-						}
-						$("#list .plan-rate-num").html (NumberFixed(new Number(data.regularTargets[0].yearRate * 100), 2));
 
-						$("#list .list_amount").html(data.regularTargets[0].unitAmount);
-
-					if(data.regularTargets[1].regularTargetAppendRate){
-						$("#list2 .list_day").html( NumberFixed(new Number(data.regularTargets[1].regularTargetAppendRate.appendYearRate * 100), 2) + '%');
+					for (var i = 0, len = data.regularTargets.length; i < len; i++) {
+						vm.returnData.push(data.regularTargets[i]);
 					}
-					$("#list2 .plan-rate-num").html (NumberFixed(new Number(data.regularTargets[1].yearRate * 100), 2));
+					vm.$set('listData', vm.returnData);
 
-					$("#list2 .list_amount").html(data.regularTargets[0].unitAmount);
+					// vm.$set('listData', data.regularTargets);
+					vm.displayFixedPro = [];
+					if(vm.currentPage && vm.currentPage==1){
+						vm.bindRealData(data);
+					}
 					if(myScroll){
 						setTimeout(function () {
 							myScroll.refresh();
 						}, 100);
-
+                    
 					}
 
 				}
 			},function(data) {
 				$(".pullUpIcon").hide();
-				alert(data);
+			//	alert(data);
 			});
-		},
-		closeLayer: function() {
-			var vm = this;
-			vm.downloadDisplay = false;
 		},
 		bindRealData: function (data) {
 			var vm = this;
 			$("#circleProduct1").attr('data-title','活期宝');
 			$("#circleProduct2 .day").html('期限'+data.regularTargets[0].day + '天');
 			$("#circleProduct2 .plan-rate-num").html(NumberFixed(new Number(data.regularTargets[0].yearRate * 100), 2) + '%');
-			if(data.regularTargets[0].regularTargetAppendRate){
-				$("#circleProduct2 .plan-rate-num").append("<span class='addRate'>+"+data.regularTargets[0].regularTargetAppendRate.addRateStr+"</span>");
+			if(data.regularTargets[0].regularTargetAppendRate!=null){
+				$("#circleProduct2 .plan-rate-num").append("<span class='addRate'>+"+NumberFixed(new Number(data.regularTargets[0].regularTargetAppendRate.appendYearRate * 100), 2) + "%</span>");
 			}
 			$("#circleProduct2 .unit-amount").html(data.regularTargets[0].unitAmount + '元起购');
 			$("#circleProduct2").attr('data-title',data.regularTargets[0].targetName);
 			$("#circleProduct2").attr('href',"html/product/fixed_product/fixed_product_details.html?targetId="+data.regularTargets[0].targetId+"&targetState="+data.regularTargets[0].targetState);
 			$("#circleProduct3 .day").html('期限'+data.regularTargets[1].day + '天');
 			$("#circleProduct3 .plan-rate-num").html(NumberFixed(new Number(data.regularTargets[1].yearRate * 100), 2) + '%');
-			if(data.regularTargets[1].regularTargetAppendRate){
-				$("#circleProduct2 .plan-rate-num").append("<span class='addRate'>+"+data.regularTargets[1].regularTargetAppendRate.addRateStr+"</span>");
+			if(data.regularTargets[1].regularTargetAppendRate!=null){
+				$("#circleProduct3 .plan-rate-num").append("<span class='addRate'>+"+NumberFixed(new Number(data.regularTargets[1].regularTargetAppendRate.appendYearRate * 100), 2) + "%</span>");
 			}
 			$("#circleProduct3 .unit-amount").html(data.regularTargets[1].unitAmount + '元起购');
 			$("#circleProduct3").attr('data-title',data.regularTargets[1].targetName);
 			$("#circleProduct3").attr('href',"html/product/fixed_product/fixed_product_details.html?targetId="+data.regularTargets[1].targetId+"&targetState="+data.regularTargets[1].targetState);
 		},
-		bindMockData: function () {
+		closeLayer: function () {
 			var vm = this;
-			$("#circleProduct1").attr('data-title','活期宝');
-			$("#circleProduct2 .day").html('期限'+vm.mockList[0].day + '天');
-			$("#circleProduct2 .plan-rate-num").html(vm.mockList[0].yRate + '%');
-			if(vm.mockList[0].regularTargetAppendRate){
-				$("#circleProduct2 .plan-rate-num").append("<span class='addRate'>+"+vm.mockList[0].regularTargetAppendRate.addRateStr+"</span>");
-			}
-			$("#circleProduct2 .unit-amount").html(vm.mockList[0].unitAmount + '元起购');
-			$("#circleProduct2").attr('data-title',vm.mockList[0].targetName);
-			$("#circleProduct2").attr('href',"html/product/fixed_product/fixed_product_details.html?targetId="+vm.mockList[0].targetId+"&targetState="+vm.mockList[0].targetState);
-			$("#circleProduct3 .day").html('期限'+vm.mockList[1].day + '天');
-			$("#circleProduct3 .plan-rate-num").html(vm.mockList[1].yRate + '%');
-			if(vm.mockList[1].regularTargetAppendRate){
-				$("#circleProduct2 .plan-rate-num").append("<span class='addRate'>+"+vm.mockList[1].regularTargetAppendRate.addRateStr+"</span>");
-			}
-			$("#circleProduct3 .unit-amount").html(vm.mockList[1].unitAmount + '元起购');
-			$("#circleProduct3").attr('data-title',vm.mockList[1].targetName);
-			$("#circleProduct3").attr('href',"html/product/fixed_product/fixed_product_details.html?targetId="+vm.mockList[1].targetId+"&targetState="+vm.mockList[1].targetState);
+			vm.downloadDisplay = false;
+		},
+		getBannerImg: function () {
+			var vm = this;
+			rest.get({
+				url: '/api/activity-banner/getBannerByVersion/'+vm.version,
+			},function (data) {
+				$(".swiper-wrapper").html();
+				for(var i=0;i<data.banners.length;i++){
+
+                	if(data.banners[i].h5Url=="" || data.banners[i].h5Url==null){
+						data.banners[i].h5Url = 'javascript:;';
+					}
+
+					var eachSwiper = "<div class='swiper-slide'>"+
+						"<a href=\""+data.banners[i].h5Url+"\">"+
+						"<img src=\""+data.banners[i].picSrc+"\" alt='' width='100%' height='100%'>"+
+						"</a></div>"
+                
+					$(".swiper-wrapper").append(eachSwiper);
+                
+				}
+				// vm.$set("bannerList",data.banners);
+				var mySwiper = new Swiper('.swiper-container', {
+					// Optional parameters
+					loop: true,
+					pagination: '.swiper-pagination',
+					paginationClickable: true,
+					// autoHeight: true,
+					// autoplay: true,
+					slidesPerSlide: 1,
+					speed: 1000,
+					// preventClicks: false,
+					// preventClicksPropagation: false
+				});
+				setInterval(function(){
+					mySwiper.slideNext();
+				}, 4000);
+
+
+			},function (data) {
+				alert(data);
+			})
 		}
 
 	},
 	ready: function() {
 		var vm = this;
-		//vm.getAjaxData();
-		vm.bindMockData();
+		vm.getBannerImg();
+		vm.getAjaxData();
 		if(storage.get("userId")){
 			vm.isLogin = true;
 		}else{
@@ -186,4 +193,7 @@ function pullUpAction() {
 	setTimeout(function () {
 		index_vm.getAjaxData();
 	}, 1000);
+}
+function forwardUrl(url) {
+	window.location.href = url;
 }

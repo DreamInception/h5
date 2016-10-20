@@ -63,7 +63,7 @@
 			            	<img src="http://jyp.oss-cn-shanghai.aliyuncs.com/pic/58bedcdc-556e-443a-bacc-928f3afc58aa.png" alt="" class="li_icon">
 			            	<div class="li_nameDiv">{{proc.name}}</div>
 			            	<div class="li_raiseDiv" v-if="proc.ifRaise"><p>加息券</p></div>
-			            	<div class="li_dayDiv">剩余{{proc.remainDay}}天</div>
+			            	<div class="li_dayDiv">{{proc.remainDay}}</div>
 			            	<div style="float:right"></div>
 			            </div>
 			            <div class="li_middle">
@@ -97,7 +97,7 @@
 			            	<div style="float:left"></div>
 			            	<p class="li_money1 li_fsize1">{{proc.currentAmount}}</p>
 			            	<p class="li_money2 li_fsize1">{{proc.respectIncome}}</p>
-			            	<p class="li_date li_fsize1 >{{proc.buyDate}}</p>
+			            	<p class="li_date li_fsize1">{{proc.buyDate}}</p>
 			            	<div style="float:right"></div>
 			            </div>
 			            <div class="li_bottom">
@@ -122,6 +122,5 @@
 	<script src="scripts/common/custom-function.js"></script>
 	<script src="scripts/common/iscroll.js"></script>
 	<script src="scripts/myCenter/regular_financial/rf_index.js"></script>
-	<script type="text/javascript">
-</script>
+	<script src="scripts/common/baiduScript.js"></script>
 </html>

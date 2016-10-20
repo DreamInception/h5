@@ -15,6 +15,7 @@ var vm = new Vue({
             }else{
                 this.selectId = couponId;
                 this.selectYearRate = yearRate;
+				$("input[type='checkbox']").removeAttr("checked");
             }
         },
         unSelectCoupon: function () {

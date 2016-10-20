@@ -8,7 +8,7 @@ var vm = new Vue({
         apiUrl: '/api/regular-target/' + getUrlParam().targetId,
         productData: {},
 		barStatus: true,
-		targetState:getUrlParam().targetState,
+		targetState:null,
 		targetDay: null
     },
     methods:{
@@ -18,26 +18,28 @@ var vm = new Vue({
 					url:vm.apiUrl
 				},
 				function(data){
-					var beginDate = new Date(data.beginDate + 1*24*60*60*1000);
+					/*var beginDate = new Date(data.beginDate + 1*24*60*60*1000);
 					var now = new Date();
 					if(beginDate < now){
 						now.setDate(now.getDate() + 1);
 						beginDate = now;
-					}
-					
+					}*/
+					var beginDate = new Date(data.beginDate);
 					data.beginDate = beginDate.format("yyyy-MM-dd");
 					
 					var endDate = new Date(data.endDate);
 					data.endDate = endDate.format("yyyy-MM-dd");
 					data.day = (new Date(data.endDate) - new Date(data.beginDate))/((24*60*60*1000)) + 1;
 					
-					data.yearRateStr = new Number(data.yearRate * 100).toFixed(2) + '%';
+					data.yearRateStr = new Number(data.yearRate * 100).toFixed(2);
 					data.dayRateStr = data.dayRate * 100 + '%';
 					
 					data.targetId = getUrlParam().targetId;
 					
+					vm.targetState = data.targetState;
+					
 					if(data.regularTargetAppendRate){
-						data.regularTargetAppendRate.appendYearRate = data.regularTargetAppendRate.appendYearRate * 100 + '%';
+						data.regularTargetAppendRate.appendYearRate = data.regularTargetAppendRate.appendYearRate * 100;
 						
 					}
 					vm.targetDay = data.day;
@@ -58,7 +60,7 @@ var vm = new Vue({
 				},
 				
 				function(data){
-					alert(data);
+					//alert(data);
 				}
 
 			);
@@ -81,5 +83,8 @@ var vm = new Vue({
     },
     ready: function () {
         this.getAjaxData();
+		if(getUrlParam().targetState!=null){
+			storage.set("targetState",getUrlParam().targetState)
+		}
     }
 })

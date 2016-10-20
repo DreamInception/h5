@@ -1,4 +1,7 @@
 /*------------------------------------------- current_productDetails.html -------------------------------------------*/
+.current_productDtls_container{
+    position: relative;
+}
 .current_productDtls_container .benefitInfo{
     /*height:21rem;*/
     background: #fff;
@@ -29,7 +32,7 @@
     color:#aa9154;
 }
 .current_productDtls_container .benefitInfo div p:last-child span{
-    font-size:1rem;
+    font-size:1.6rem;
     color:#aa9154;
 }
 .current_productDtls_container .addBlock{
@@ -53,8 +56,9 @@
     width: 84%;
     height: 2rem;
     line-height: 2rem;
-    text-align: center;
+    text-align: left;
     color:#717071;
+    text-indent: 1rem;
 }
 .current_productDtls_container .progressBlock{
     font-size:1.2rem;
@@ -217,6 +221,7 @@
     padding: 1.1rem 1.4rem;
     background: #fff;
     /*border-bottom: solid 1px #f2f2f2;*/
+    position: relative;
 }
 .buy-currPro-container .form-input {
     line-height:1.5rem;
@@ -229,6 +234,8 @@
     outline: none;
     margin-top: -5px;
     width: 65%;
+    top: 16px;
+    position: absolute;
 }
 .buy-currPro-container .form-text {
     line-height:1.5rem;
@@ -376,18 +383,23 @@
     margin-left: 4%;
 }
 /*------------------------------------------- fixed_productDetails.html -------------------------------------------*/
+.fixed_productDtls_container{
+    position: relative;
+}
 .fixed_productDtls_container .benefitInfo{
     /*height:21rem;*/
     background: #fff;
     padding: 2rem 1.6rem;
+
 }
 .fixed_productDtls_container .targetActivityBg{
     background:#fb5f20;
     border-radius:4rem;
     -webkit-border-radius:4rem;
-    font-size: 1rem;
-    line-height: 1rem;
-    padding: 0.3rem 0.8rem;
+    -moz-border-radius:4rem;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0.1rem 0.6rem;
     color: #fff;
     text-align: center;
     margin-left: 0.4rem;
@@ -406,7 +418,7 @@
     color:#aa9154;
 }
 .fixed_productDtls_container .benefitInfo div p:last-child span{
-    font-size:1rem;
+    font-size:1.6rem;
     color:#aa9154;
 }
 .fixed_productDtls_container .addBlock{
@@ -527,6 +539,7 @@
     height:10rem;
     margin-top: 0.9rem;
     border: solid 1px #f2f2f2;
+    /*padding-bottom: 12rem;*/
 }
 .fixed_productDtls_container .product_introduction .firstLine a:first-child{
     border-right: solid 1px #f2f2f2;
@@ -634,6 +647,7 @@
     width: 92%;
     background: #fff;
     /*border-bottom: solid 1px #f2f2f2;*/
+    position: relative;
 }
 .buy-fixedPro-container .form-group img{
     width: 1rem;
@@ -657,6 +671,8 @@
     outline: none;
     margin-top: -5px;
     width: 65%;
+    top: 16px;
+    position: absolute;
 }
 .buy-fixedPro-container .avail_cards_block{
     margin-top: 3rem;
@@ -1001,11 +1017,14 @@
 
 /*------------------------------------------- calculator.html -------------------------------------------*/
 .calculator-container {
-
+    position: relative;
 }
 .calculator-container .cal-earning {
     padding: 3.4rem 15% 4rem 15%;
     background:#4a4a4a;
+    width: 70%;
+    display: block;
+    margin: 0 auto;
 }
 .calculator-container .cal-earning p:first-child{
     opacity:0.69;
@@ -1030,12 +1049,13 @@
     text-align:center;
 }
 .calculator-container .verLine{
-    margin-left: 5%;
+    margin-left: 10%;
     opacity:0.2;
-    border:1px solid #ffffff;
-    width:0px;
+    /*border:1px solid #ffffff;*/
+    width:1px;
     height:4rem;
-
+    background: #fff;
+    display: block;
 }
 .calculator-container .pd-value{
     line-height: 2.4rem;

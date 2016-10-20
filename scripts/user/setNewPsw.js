@@ -13,6 +13,7 @@ var index_vm = new Vue({
 		pswDisplay: false,
 		type: 'password',
 		sendTxt: '发送',
+		disableAttr: false
     },
     methods : {
 		sendSms : function () {
@@ -70,4 +71,13 @@ var index_vm = new Vue({
 		this.mobileText = enycryptPhoneNum(this.mobile);
     }
 	
+});
+
+index_vm.$watch('password', function (val) {
+	if(val==null||val==''||val.length!=6){
+		this.msgFlag=false;
+	}else{
+		this.msgFlag=true;
+	}
+	checkInput.validatePassword(val,'setPswBtn');
 });

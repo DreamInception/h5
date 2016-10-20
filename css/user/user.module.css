@@ -94,6 +94,9 @@
     /*top: 1.7rem;*/
 /*}*/
 /*------------------------------------------- reg.html -------------------------------------------*/
+.user-common-container{
+    position: relative;
+}
 .user-common-container .form-bind-wechat{
     /*margin: 2rem;*/
     font-size:1.5rem;
@@ -186,4 +189,22 @@
     line-height:1.6rem;
     padding: 3rem 0 2.8rem 0;
     text-align:center;
+}
+.platform_article{
+    padding:3px 10px 15px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: none;
+}
+.platform_article .contractSection,.platform_article .pa-paragraph{
+    padding-top: 1rem;
+
+}
+.platform_article .pa-paragraph p{
+    padding-top: 1rem;
 }

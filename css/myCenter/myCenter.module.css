@@ -235,7 +235,8 @@
 
 .recharge-money-container input {
     font-size: 1.5rem;
-    line-height: 48px;
+    /*line-height: 48px;*/
+    padding: 1rem 0;
     text-indent: 10rem;
     color: #c8c9ca;
     letter-spacing: 1px;
@@ -285,7 +286,7 @@
 .recharge-money-container .form-input-box {
     position: relative;
     border: 1px solid #ac9354;
-    height: 4rem;
+    /*height: 4rem;*/
 }
 
 .recharge-money-container .form-input-box .msgCode {
@@ -609,7 +610,8 @@
 
 .asset_index_container .detail_list li .icon {
     width: 2rem;
-    /*margin-top: 1.5rem;*/
+    margin-top: -5px;
+
 }
 
 .asset_index_container .detail_list li span {
@@ -703,7 +705,7 @@
     display: inline-block;
 }
 
-.setup_index_container .logout {
+.logout {
     width: 100%;
     height: 45px;
     line-height: 45px;
@@ -711,7 +713,7 @@
     font-size: 15px;
     color: #ffffff;
     background: #ac9354;
-    position: fixed;
+    position: absolute;
     bottom: 0;
 }
 
@@ -721,7 +723,7 @@
 }
 
 .total_asset_container .asset_top {
-    padding: 5.3rem 0 3.4rem 0;
+    padding: 4rem 0 3.4rem 0;
     background: #fff;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -730,13 +732,13 @@
 }
 
 .total_asset_container .asset_top .title {
-    font-size: 1.2rem;
-    line-height: 1.2rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     color: #4a4a4a;
     text-align: center;
     width: 100%;
     position: absolute;
-    top: 13rem;
+    top: 11rem;
 }
 
 .total_asset_container .asset_top .number {
@@ -747,7 +749,7 @@
     padding-top: 0.2rem;
     width: 100%;
     position: absolute;
-    top: 15rem;
+    top: 13rem;
 }
 
 .total_asset_container .detail_list {
@@ -1004,7 +1006,7 @@
     font-size: 1rem;
     line-height: 1rem;
     color: #fff;
-    text-align: left;
+    text-align: center;
 }
 
 .currentBao_container .current_asset_top .asset_benefit .value {
@@ -1019,7 +1021,9 @@
     background: #ffffff;
     width: 1px;
     height: 4rem;
-    margin-left: 20%;
+    margin-left: 10%;
+    margin-right: 9.5%;
+    opacity: 0.16;
 }
 
 .currentBao_container .current_asset_list .each_currentBao {
